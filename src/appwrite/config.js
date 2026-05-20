@@ -73,7 +73,7 @@ export class Service{
     }
   }
 
-  async createfile({file,fileId = ID.unique()}){
+  async createFile({file,fileId = ID.unique()}){
     try{
       return await this.storage.createFile(
         conf.appwriteBucketId,
@@ -99,7 +99,7 @@ export class Service{
     }
   }
 
-  async getFilePreview({fileId}){
+  async getFilePreview(fileId){
     try{
       return await this.storage.getFilePreview(
         conf.appwriteBucketId,
@@ -110,4 +110,7 @@ export class Service{
     }
   }
 
+  
 }
+const appwriteService = new Service();
+export default appwriteService;

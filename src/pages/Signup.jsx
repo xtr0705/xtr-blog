@@ -1,8 +1,8 @@
 import { useDispatch } from "react-redux";
-import authService from "../../appwrite/auth";
-import { login } from "../../store/AuthSlice";
+import authService from "../appwrite/auth.js";
+import { login } from "../store/AuthSlice.js";
 import { useState } from "react";
-import {Button,Input} from '../index.js'
+import {Button,Input} from '../components/index.js'
 import { useForm } from "react-hook-form";
 
 function Signup() {

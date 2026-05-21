@@ -1,86 +1,144 @@
 import { useDispatch } from "react-redux";
 import authService from "../appwrite/auth.js";
-import { login } from "../store/AuthSlice.js";
+import { login as authLogin } from "../store/AuthSlice.js";
 import { useState } from "react";
-import {Button,Input} from '../components/index.js'
+import { Button, Input } from "../components/index.js";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 function Signup() {
 
-  const {register,handleSubmit} = useForm();
-  const [error,setError] = useState('');
+  const { register, handleSubmit } = useForm();
+
+  const [error, setError] = useState("");
+
   const dispatch = useDispatch();
-   
-  const Signup = async (data)=>{
-    try{
-      const details = await authService.createAccount(data);
+
+  const signup = async (data) => {
+
+    setError("");
+
+    try {
+
+      const details =
+        await authService.createAccount(data);
+
       if (details) {
-        const userData = await authService.getCurrentUser(details)
+
+        const userData =
+          await authService.getCurrentUser();
+
         if (userData) {
-          dispatch(login(userData));
+          dispatch(authLogin(userData));
         }
       }
-    }catch(error){
-      console.log(error.message)
+
+    } catch (error) {
+
+      console.log(error.message);
       setError(error.message);
     }
-  }
+  };
 
   return (
-      <div className="flex items-center justify-center" >
-      <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-lg p-10 border border-black/10`}>
 
-        <div className="text-center text-2xl font-bold" >
-          <span className="inline-block w-full max-w-25" >
-            <logo width='100%' />
-          </span>
+    <div className="min-h-screen bg-zinc-950 flex items-center justify-center px-4">
+
+      <div className="w-full max-w-md bg-zinc-900 border border-zinc-800 rounded-3xl p-8 shadow-2xl">
+
+        <div className="mb-8 text-center">
+
+          <h1 className="text-4xl font-black text-white mb-3">
+            Create Account
+          </h1>
+
+          <p className="text-zinc-400">
+            Start sharing your thoughts with the world
+          </p>
+
         </div>
-        <h2 className="text-center text-2xl font-bold leading-tight" >
-          Sign up to create your account
-        </h2>
-        <p className="mt-2 text-center text-base text-black/60" >
-          Already have an account? 
-          <a 
-          to="/login" 
-          className="font-medium text-primary transition-all duration-200 hover:underline" 
-          >
-            Sign In
-          </a>
-        </p>
-        {error && <p className="text-red-600 mt-8 text-center" >{error}</p>}
-        <form onSubmit={handleSubmit(Signup)} >
-          <div className="space-y-5" >
-            <Input 
-              type='email'
-              placeholder='Enter email'
-              label='Enter e-mail : '
-              {...register('email',{
-                required:true
-              })}
-            />
+
+        {error && (
+
+          <p className="bg-red-500/10 border border-red-500 text-red-400 text-sm rounded-xl px-4 py-3 mb-6">
+            {error}
+          </p>
+
+        )}
+
+        <form
+          onSubmit={handleSubmit(signup)}
+          className="space-y-5"
+        >
+
+          <div>
+
+            <label className="block text-sm font-medium text-zinc-300 mb-2">
+              Email
+            </label>
+
             <Input
-              type='password'
-              placeholder='enter password'
-              label='Enter Password : '
-              {...register('password',{
-                required:true,
-                validate:{
-                  matchPattern:(value)=>/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).+$/.test(value) || "Password must contain at least 1 uppercase, 1 lowercase, 1 number and a special character"
+              type="email"
+              placeholder="Enter your email"
+              className="w-full"
+              {...register("email", {
+                required: true,
+                validate: {
+                  matchPattern: (value) =>
+                    /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)
+                    || "Enter valid email"
                 }
               })}
             />
-            <Input 
-            />
-            
-            <Button
-            type="submit"
-            className="w-full"
-            >
-              Create Account
-            </Button>
+
           </div>
+
+          <div>
+
+            <label className="block text-sm font-medium text-zinc-300 mb-2">
+              Password
+            </label>
+
+            <Input
+              type="password"
+              placeholder="Create a password"
+              className="w-full"
+              {...register("password", {
+                required: true,
+                validate: {
+                  matchPattern: (value) =>
+                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).+$/.test(value)
+                    || "Password must contain uppercase, lowercase, number and special character"
+                }
+              })}
+            />
+
+          </div>
+
+          <Button
+            type="submit"
+            className="w-full bg-white text-black hover:bg-zinc-200 transition rounded-xl py-3 font-semibold"
+          >
+            Create Account
+          </Button>
+
         </form>
+
+        <p className="text-center text-zinc-400 text-sm mt-6">
+
+          Already have an account?{" "}
+
+          <Link
+            to="/login"
+            className="text-white hover:underline"
+          >
+            Sign In
+          </Link>
+
+        </p>
+
       </div>
+
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import appwriteService from "../appwrite/config";
+import { Link } from "react-router-dom";
 
 function AllPosts() {
 
@@ -25,15 +26,17 @@ function AllPosts() {
     <div>
       {posts.map((post)=>{
         return (
-          <div key={post.$id}>
-            <img 
-            src={getImage(post.featuredImage)} 
-            alt={post.title}
-            />
-            <h2>{post.title}</h2>
-            <p>{post.content}</p>
-            <p>{post.$createdAt}</p>
-          </div>
+          <Link to={`/post/${post.$id}`} >
+            <div key={post.$id}>
+              <img 
+              src={getImage(post.featuredImage)} 
+              alt={post.title}
+              />
+              <h2>{post.title}</h2>
+              <p>{post.content}</p>
+              <p>{post.$createdAt}</p>
+            </div>
+          </Link>
         )
       })}
     </div>

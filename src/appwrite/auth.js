@@ -44,6 +44,9 @@ export class AuthService{
         return null;
       }
     }catch(error){
+      if (error.code ===401) {
+        return null;
+      }
       console.log('error occrued getting user ',error)
     }
   }

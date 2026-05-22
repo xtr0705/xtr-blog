@@ -13,13 +13,24 @@ function Login() {
   const [error, setError] = useState('');
   const { register, handleSubmit } = useForm();
 
-  const Login = async (data) => {
+  const Login = async ({email,password}) => {
     try {
-      const session = await authService.login(data);
+      const session = await authService.login(
+        {
+          email,
+          password
+        }
+      )
       if (session) {
         const userData = await authService.getCurrentUser()
+        const mainUserData = {
+          id: userData.$id,
+          name:userData.name,
+          email:userData.email
+        }
         if (userData) {
-          await dispatch(authLogin(userData))
+          dispatch(authLogin(mainUserData))
+          navigate("/");
         }
       }
     } catch (error) {
@@ -74,12 +85,7 @@ function Login() {
                 placeholder='enter your password'
                 label='Enter password : '
                 {...register('password', {
-                  required: true,
-                  maxLength: 20,
-                  minLength: 16,
-                  validate: {
-                    matchPattern: (value) => /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).+$/.test(value) || "Password must contain at least 1 uppercase, 1 lowercase, 1 number and a special character"
-                  }
+                  required: true
                 })}
               />
             </div>
@@ -88,8 +94,8 @@ function Login() {
                 className="w-full bg-white text-black hover:bg-zinc-200 transition rounded-xl py-3 font-semibold"
               >Sign in</Button>
           </form>
-          <p>
-            Don't have an account?
+          <p className="text-center text-zinc-400 text-sm mt-6">
+            Don't have an account?{""}
             <Link
             to="/signup"
             className="text-white hover:underline"

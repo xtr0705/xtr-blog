@@ -21,7 +21,12 @@ function App() {
     authService.getCurrentUser()
       .then((userData) => {
         if (userData) {
-          dispatch(login(userData))
+          const mainUserData = {
+            id:userData.$id,
+            name:userData.name,
+            email:userData.email
+          }
+          dispatch(login(mainUserData))
         } else {
           dispatch(logout());
         }

@@ -14,7 +14,7 @@ function ViewPost() {
     const deleteFull = async () => {
       const deleteImg = await appwriteService.deleteFile(data.featuredImage);
       if (deleteImg) {
-        await appwriteService.deletePost(slug);
+        await appwriteService.deletePost({slug});
         navigate('/all-posts');
       }
     }
@@ -23,7 +23,7 @@ function ViewPost() {
 
   useEffect(() => {
     const targetPost = async () => {
-      const fetchedPost = await appwriteService.getPost(slug);
+      const fetchedPost = await appwriteService.getPost({slug});
 
       if (fetchedPost) {
         setData(fetchedPost);

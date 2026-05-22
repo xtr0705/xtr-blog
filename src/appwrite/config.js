@@ -1,6 +1,6 @@
 import conf from "../conf/conf";
 
-import {Client, Databases, Storage, Query, ID} from "appwrite";
+import {Client, Databases, Storage, ID} from "appwrite";
 
 export class Service{
   client = new Client();
@@ -15,18 +15,16 @@ export class Service{
     this.storage = new Storage(this.client);
   }
 
-  async createPost({title, content, featuredImage, status, userId, slug}){
+  async createPost({title, content, featuredImage}){
     try{
       return await this.databases.createDocument(
         conf.appwriteDatabaseId,
         conf.appwriteCollectionId,
-        slug,
+        ID.unique(),
         {
           title,
           featuredImage,
           content,
-          status,
-          userId
         }
       )
     }catch(error){
@@ -50,18 +48,18 @@ export class Service{
 
   async getPost({slug}){
     try{
-      await this.databases.getDocument(
+      return await this.databases.getDocument(
         conf.appwriteDatabaseId,
         conf.appwriteCollectionId,
         slug
       )
-      return true;
+      
     }catch(error){
       console.log('Error occured while opening post : ',error)
     }
   }
 
-  async getPosts(queries= [Query.equal('status','active')]){
+  async getPosts(queries){
     try{
       return await this.databases.listDocuments(
         conf.appwriteDatabaseId,
@@ -101,7 +99,7 @@ export class Service{
 
   async getFilePreview(fileId){
     try{
-      return await this.storage.getFilePreview(
+      return this.storage.getFilePreview(
         conf.appwriteBucketId,
         fileId
       )

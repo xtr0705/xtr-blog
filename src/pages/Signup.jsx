@@ -4,16 +4,14 @@ import { login as authLogin } from "../store/AuthSlice.js";
 import { useState } from "react";
 import { Button, Input } from "../components/index.js";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Signup() {
 
   const { register, handleSubmit } = useForm();
-
   const [error, setError] = useState("");
-
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const signup = async (data) => {
 
     setError("");
@@ -23,9 +21,15 @@ function Signup() {
 
       if (details) {
         const userData = await authService.getCurrentUser();
+        const mainUserData = {
+          id:userData.$id,
+          name:userData.name,
+          email:userData.email
+        }
 
         if (userData) {
-          dispatch(authLogin(userData));
+          dispatch(authLogin(mainUserData));
+          navigate("/");
         }
       }
 

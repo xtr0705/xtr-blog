@@ -8,16 +8,18 @@ export default function Home() {
               XTR Blog Platform
             </p>
 
-            <h1 className="text-5xl md:text-6xl font-black leading-tight mb-6">
+            <h1 className="text-5xl font-[Sora] md:text-6xl font-black leading-tight mb-6">
               Share Your
+              <span className="font-[Serif] font-thin italic block text-zinc-400">
+                Ideas
+              </span>
               <span className="block text-zinc-400">
-                Thoughts With The World
+               With The World
               </span>
             </h1>
 
             <p className="text-zinc-400 text-lg leading-relaxed mb-8 max-w-xl">
-              Create posts, upload images, and explore blogs from other users.
-              Built with React, Appwrite and Tailwind CSS.
+              Create. Post. Scroll. Pretend you’re productive.
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -45,7 +47,7 @@ export default function Home() {
               </div>
 
               <p className="text-zinc-400 text-sm">
-                Secure login and signup system using Appwrite.
+                Your thoughts, safely locked behind a password you’ll forget.
               </p>
             </div>
 
@@ -56,7 +58,7 @@ export default function Home() {
               </div>
 
               <p className="text-zinc-400 text-sm">
-                Upload featured images for every blog post.
+                A picture says a thousand words. Your blog still says more.
               </p>
             </div>
 
@@ -67,7 +69,7 @@ export default function Home() {
               </div>
 
               <p className="text-zinc-400 text-sm">
-                Create, read and delete blog posts dynamically.
+                Post it. Edit it. Delete it. Regret it later.
               </p>
             </div>
 
@@ -78,7 +80,7 @@ export default function Home() {
               </div>
 
               <p className="text-zinc-400 text-sm">
-                Clean modern interface built with Tailwind CSS.
+                Looks good on every screen you procrastinate on.
               </p>
             </div>
           </div>

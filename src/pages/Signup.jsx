@@ -19,14 +19,10 @@ function Signup() {
     setError("");
 
     try {
-
-      const details =
-        await authService.createAccount(data);
+      const details = await authService.createAccount(data);
 
       if (details) {
-
-        const userData =
-          await authService.getCurrentUser();
+        const userData = await authService.getCurrentUser();
 
         if (userData) {
           dispatch(authLogin(userData));
@@ -34,7 +30,6 @@ function Signup() {
       }
 
     } catch (error) {
-
       console.log(error.message);
       setError(error.message);
     }
@@ -116,8 +111,9 @@ function Signup() {
           </div>
 
           <Button
+            
             type="submit"
-            className="w-full bg-white text-black hover:bg-zinc-200 transition rounded-xl py-3 font-semibold"
+            className="w-full text-black hover:bg-zinc-200 hover:text-blue-600 transition rounded-xl py-3 font-semibold"
           >
             Create Account
           </Button>

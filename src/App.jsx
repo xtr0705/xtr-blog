@@ -11,6 +11,7 @@ import CreatePost from "./pages/createPost";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
+import AuthFlow from "./components/AuthFlow";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,32 +41,57 @@ function App() {
 
             <Route
               path="/"
-              element={<Home />}
+              element={
+              <AuthFlow authentication={true} >
+                <Home />
+              </AuthFlow>
+            
+            }
             />
 
             <Route
               path="/login"
-              element={<Login />}
+              element={
+              <AuthFlow authentication={false}>
+                <Login/>
+              </AuthFlow>
+            }
             />
 
             <Route
               path="/signup"
-              element={<Signup />}
+              element={
+              <AuthFlow authentication={false} >
+                <Signup />
+              </AuthFlow>
+            }
             />
 
             <Route
               path="/all-posts"
-              element={<AllPosts />}
+              element={
+              <AuthFlow authentication={true} >
+                <AllPosts />
+              </AuthFlow>
+            
+            }
             />
 
             <Route
               path="/add-post"
-              element={<CreatePost />}
+              element={
+              <AuthFlow authentication={true} >
+                <CreatePost />
+              </AuthFlow>}
             />
 
             <Route
               path="/post/:slug"
-              element={<ViewPost />}
+              element={
+              <AuthFlow authentication={true} >
+                <ViewPost />
+              </AuthFlow>
+            }
             />
 
           </Routes>

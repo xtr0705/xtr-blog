@@ -4,10 +4,11 @@ import { login as authLogin } from "../store/AuthSlice.js";
 import { useForm } from "react-hook-form";
 import authService from "../appwrite/auth.js";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 
 function Login() {
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [error, setError] = useState('');
   const { register, handleSubmit } = useForm();
@@ -90,7 +91,7 @@ function Login() {
           <p>
             Don't have an account?
             <Link
-            to="/Signup"
+            to="/signup"
             className="text-white hover:underline"
             >
               Sign up

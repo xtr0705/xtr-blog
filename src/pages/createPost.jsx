@@ -18,7 +18,7 @@ function CreatePost() {
         featuredImage: uploadedFile.$id
       })
 
-      navigate('/AllPosts');
+      navigate('/all-posts');
     }
   }
 

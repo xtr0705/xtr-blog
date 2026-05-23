@@ -15,11 +15,21 @@ function ViewPost() {
   )
 
   function deletePost() {
+    if (!userData || userData.id !== data.userId) {
+      alert('You are not authorized to delete this post');
+      return;
+    }
+
     const deleteFull = async () => {
-      const deleteImg = await appwriteService.deleteFile(data.featuredImage);
-      if (deleteImg) {
-        await appwriteService.deletePost({slug});
-        navigate('/all-posts');
+      try {
+        const deleteImg = await appwriteService.deleteFile(data.featuredImage);
+        if (deleteImg) {
+          await appwriteService.deletePost({slug});
+          navigate('/all-posts');
+        }
+      } catch (error) {
+        console.log('Error deleting post:', error);
+        alert('Failed to delete post');
       }
     }
     deleteFull();
@@ -47,7 +57,7 @@ function ViewPost() {
           className="rounded-lg"
         />
         {
-          userData?.id === data.userId &&(
+          userData && userData.id === data.userId &&(
             <Button className="mb-2" onClick={deletePost}> Delete Post </Button>
           )
         }

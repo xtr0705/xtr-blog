@@ -3,12 +3,16 @@ import appwriteService from "../appwrite/config.js";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from '../components/index.js'
+import { useSelector } from "react-redux";
 
 function ViewPost() {
 
   const [data, setData] = useState();
   const { slug } = useParams();
   const navigate = useNavigate();
+  const userData = useSelector( 
+    (state)=>state.auth.userData
+  )
 
   function deletePost() {
     const deleteFull = async () => {
@@ -39,10 +43,14 @@ function ViewPost() {
     return (
       <div className='w-full bg-gray-100 rounded-lg p-4'>
         <img
-          src={appwriteService.getFilePreview(data.featuredImage)}
+          src={appwriteService.getFileView(data.featuredImage)}
           className="rounded-lg"
         />
-        <Button className="mb-2" onClick={deletePost}> Delete Post </Button>
+        {
+          userData?.id === data.userId &&(
+            <Button className="mb-2" onClick={deletePost}> Delete Post </Button>
+          )
+        }
         <p className="font-light mb-2" >{data.$createdAt}</p>
         <h2 className="text-xl font-bold mb-2" >{data.title}</h2>
         <p>{data.content}</p>

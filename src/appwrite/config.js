@@ -15,7 +15,7 @@ export class Service{
     this.storage = new Storage(this.client);
   }
 
-  async createPost({title, content, featuredImage}){
+  async createPost({title,userId, content, featuredImage}){
     try{
       return await this.databases.createDocument(
         conf.appwriteDatabaseId,
@@ -25,6 +25,7 @@ export class Service{
           title,
           featuredImage,
           content,
+          userId
         }
       )
     }catch(error){
@@ -97,12 +98,12 @@ export class Service{
     }
   }
 
-  async getFilePreview(fileId){
+  getFileView(fileId){
     try{
-      return this.storage.getFilePreview(
+      return this.storage.getFileView(
         conf.appwriteBucketId,
         fileId
-      )
+      ).toString()
     }catch(error){
       console.log('error fetching thumbnail : ',error);
     }

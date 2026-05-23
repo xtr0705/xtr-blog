@@ -4,41 +4,69 @@ import { Link } from "react-router-dom";
 
 function AllPosts() {
 
-  const [posts,setPosts] = useState([]);
+  const [posts, setPosts] = useState([]);
 
-  useEffect(()=>{
-    const fetchPosts = async ()=>{
+  useEffect(() => {
+    const fetchPosts = async () => {
       const data = await appwriteService.getPosts();
 
-      if(data) {
+      if (data) {
         setPosts(data.documents)
       }
     }
-    
-    fetchPosts();
-  },[])
 
-  const getImage = (img) =>{
-    return appwriteService.getFilePreview(img);
+    fetchPosts();
+  }, [])
+
+  const getImage = (img) => {
+    const url = appwriteService.getFileView(img);
+    return url
   }
 
   return (
-    <div>
-      {posts.map((post)=>{
-        return (
-          <Link to={`/post/${post.$id}`} >
-            <div key={post.$id}>
-              <img 
-              src={getImage(post.featuredImage)} 
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      {posts.map((post) => (
+        <Link
+          to={`/post/${post.$id}`}
+          key={post.$id}
+          className="group"
+        >
+
+          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden hover:border-zinc-700 transition duration-300 hover:-translate-y-1">
+
+            <img
+              src={getImage(post.featuredImage)}
               alt={post.title}
-              />
-              <h2>{post.title}</h2>
-              <p>{post.content}</p>
-              <p>{post.$createdAt}</p>
+              className="w-full h-40 object-cover"
+            />
+
+            <div className="p-4">
+
+              <p className="text-zinc-500 text-xs mb-2">
+                {new Date(post.$createdAt).toDateString()}
+              </p>
+
+              <h2 className="text-lg font-bold text-white line-clamp-1 mb-2">
+
+                {post.title
+                  ? post.title
+                  : post.content.slice(0, 40)}
+
+              </h2>
+
+              <p className="text-zinc-400 text-sm line-clamp-2">
+                {post.content.slice(0, 80)}...
+              </p>
+
             </div>
-          </Link>
-        )
-      })}
+
+          </div>
+
+        </Link>
+
+      ))}
+
     </div>
   );
 }

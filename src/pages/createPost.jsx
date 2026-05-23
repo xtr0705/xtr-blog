@@ -35,7 +35,7 @@ function CreatePost() {
 
   return (
 
-    <div className="min-h-screen bg-zinc-950 text-white px-4 py-16">
+    <div className="min-h-screen bg-zinc-950 text-white px-4 py-10 md:py-16">
 
       <div className="max-w-3xl mx-auto">
 
@@ -45,9 +45,9 @@ function CreatePost() {
             Create
           </p>
 
-          <h1 className="text-5xl font-black font-[Sora] leading-tight mb-4">
+          <h1 className="text-4xl md:text-5xl font-black leading-tight mb-4">
             Write Something
-            <span className="italic font-thin text-zinc-400 block">
+            <span className="font-[Serif] font-thin italic block text-zinc-400">
               Interesting
             </span>
           </h1>
@@ -60,26 +60,21 @@ function CreatePost() {
 
         <form
           onSubmit={handleSubmit(uploadPost)}
-          className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 space-y-6"
+          className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 md:p-8 space-y-6"
         >
 
-          {/* Upload */}
-
           <div>
-
             <label className="block text-sm font-medium text-zinc-300 mb-3">
               Featured Image
             </label>
 
             <Input
               type="file"
-              className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-zinc-300 file:mr-4 file:bg-white file:text-black file:border-0 file:px-4 file:py-2 file:rounded-lg file:font-medium hover:file:bg-zinc-200"
+              className="
+              w-full bg-zinc-950 focus:bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-zinc-400 focus:outline-none file:bg-black file:text-white file:border file:border-zinc-700 file:rounded-lg file:px-4 file:py-2 file:mr-4 file:hover:bg-zinc-900 focus:border-zinc-600 transition"
               {...register('image')}
             />
-
           </div>
-
-          {/* Title */}
 
           <div>
 
@@ -96,8 +91,6 @@ function CreatePost() {
 
           </div>
 
-          {/* Content */}
-
           <div>
 
             <label className="block text-sm font-medium text-zinc-300 mb-3">
@@ -111,8 +104,6 @@ function CreatePost() {
             />
 
           </div>
-
-          {/* Button */}
 
           <Button
             type='submit'

@@ -31,18 +31,18 @@ function Header() {
   return (
     <header className='w-full border-b border-zinc-800 bg-zinc-950 sticky top-0 z-50 backdrop-blur'>
 
-      <div className='max-w-7xl mx-auto px-6 py-4 grid grid-cols-3 items-center'>
+      <div className='max-w-7xl mx-auto px-4 py-4 flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-0 items-center'>
 
         <Link
           to="/"
-          className="text-3xl font-black text-white tracking-tight hover:text-zinc-300 transition"
+          className="text-2xl md:text-3xl font-black text-white tracking-tight hover:text-zinc-300 transition"
         >
           xtr.Blog
         </Link>
 
         <nav className='flex justify-center'>
 
-          <ul className='flex items-center gap-8'>
+          <ul className='flex flex-wrap justify-center items-center gap-4 md:gap-8'>
 
             {navItems.map((item) =>
               item.active ? (
@@ -59,13 +59,12 @@ function Header() {
               ) : null
             )}
 
-
           </ul>
 
 
         </nav>
 
-        <div className='flex justify-end' >
+        <div className='flex justify-center md:justify-end w-full'>
           {authStatus && (
             <li className='ml-4'>
               <LogoutButton />

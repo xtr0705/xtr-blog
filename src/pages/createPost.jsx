@@ -18,11 +18,12 @@ function CreatePost() {
 
     if (uploadedFile) {
       try{
-        appwriteService.createPost({
+        await appwriteService.createPost({
           title: data.title,
           content: data.content,
           featuredImage: uploadedFile.$id,
-          userId: userData.id
+          userId: userData.id,
+          name:userData.name
         })
       }catch(error){
         console.log("error occured while creating post",error)

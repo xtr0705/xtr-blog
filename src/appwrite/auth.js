@@ -24,6 +24,7 @@ export class AuthService{
       }
     }catch(error){
       console.log('error occured creating account ', error)
+      throw error;
     }
   }
 

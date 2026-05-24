@@ -90,6 +90,10 @@ function ViewPost() {
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
 
               <p className="text-zinc-500 text-xs sm:text-sm">
+                {data.name}
+              </p>
+              
+              <p className="text-zinc-500 text-xs sm:text-sm">
                 {new Date(data.$createdAt).toDateString()}
               </p>
 

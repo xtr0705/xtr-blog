@@ -71,7 +71,23 @@ function Signup() {
         >
 
           <div>
+            <label className="block text-sm font-medium text-zinc-300 mb-2">
+              Username
+            </label>
 
+            <Input 
+              type="text"
+              placeholder="Enter username"
+              className="w-full"
+              {...register("name",{
+                required:true,
+                minLength:5,
+                maxLength:16
+              })}
+            />
+          </div>
+
+          <div>
             <label className="block text-sm font-medium text-zinc-300 mb-2">
               Email
             </label>
@@ -89,7 +105,6 @@ function Signup() {
                 }
               })}
             />
-
           </div>
 
           <div>

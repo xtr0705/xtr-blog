@@ -13,15 +13,19 @@ function CreatePost() {
   )
 
   const uploadPost = async (data) => {
-    const file = data.image[0];
-    const uploadedFile = await appwriteService.createFile({ file })
+    let uploadedFile = null;
+    if (data.image && data.image[0]) {
+      uploadedFile=await appwriteService.createFile({
+        file:data.image[0]
+      })
+    }
 
     if (uploadedFile) {
       try{
         await appwriteService.createPost({
           title: data.title,
           content: data.content,
-          featuredImage: uploadedFile.$id,
+          featuredImage: uploadedFile ? uploadedFile.$id : null,
           userId: userData.id,
           name:userData.name
         })

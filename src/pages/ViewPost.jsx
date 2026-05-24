@@ -92,7 +92,7 @@ function ViewPost() {
               <p className="text-zinc-500 text-xs sm:text-sm">
                 {data.name}
               </p>
-              
+
               <p className="text-zinc-500 text-xs sm:text-sm">
                 {new Date(data.$createdAt).toDateString()}
               </p>
@@ -113,10 +113,14 @@ function ViewPost() {
 
           <div className="overflow-hidden rounded-2xl md:rounded-3xl border border-zinc-800 mb-6 md:mb-10 max-w-4xl mx-auto">
 
-            <img
-              src={appwriteService.getFileView(data.featuredImage)}
-              className="w-full h-52 sm:h-72 md:h-96 object-cover"
-            />
+            {
+              data.featuredImage &&(
+                <img
+                src={appwriteService.getFileView(data.featuredImage)}
+                className="w-full h-52 sm:h-72 md:h-96 object-cover"
+                />
+              )
+            }
 
           </div>
 

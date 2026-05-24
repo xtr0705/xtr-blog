@@ -62,11 +62,15 @@ function AllPosts() {
 
             <div className="overflow-hidden">
 
-              <img
-                src={getImage(post.featuredImage)}
-                alt={post.title}
-                className="w-full h-44 object-cover group-hover:scale-105 transition duration-500"
-              />
+              {
+                post.featuredImage &&(
+                  <img
+                  src={getImage(post.featuredImage)}
+                  alt={post.title}
+                  className="w-full h-44 object-cover group-hover:scale-105 transition duration-500"
+                  />
+                )
+              }
 
             </div>
 

@@ -5,15 +5,16 @@ import { useForm } from "react-hook-form";
 import authService from "../appwrite/auth.js";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import { Eye, EyeOff } from "lucide-react";
 
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [error, setError] = useState('');
   const { register, handleSubmit } = useForm();
+  const [showPassword, setShowPassword] = useState(false);
 
-  const Login = async ({email,password}) => {
+  const Login = async ({ email, password }) => {
     try {
       const session = await authService.login(
         {
@@ -25,8 +26,8 @@ function Login() {
         const userData = await authService.getCurrentUser()
         const mainUserData = {
           id: userData.$id,
-          name:userData.name,
-          email:userData.email
+          name: userData.name,
+          email: userData.email
         }
         if (userData) {
           dispatch(authLogin(mainUserData))
@@ -62,7 +63,7 @@ function Login() {
               </label>
               <Input
                 type='email'
-                className='w-full'
+                className='w-full text-white'
                 placeholder='enter your email'
                 {...register('email', {
                   required: true,
@@ -79,32 +80,46 @@ function Login() {
                 Password
               </label>
 
-              <Input
-                type='password'
-                className='w-full'
-                placeholder='enter your password'
-                label='Enter password : '
-                {...register('password', {
-                  required: true
-                })}
-              />
+              <div className="relative" >
+                <Input
+                  type={showPassword ? 'text' : 'password'}
+                  className='w-full text-white'
+                  placeholder='enter your password'
+                  {...register('password', {
+                    required: true
+                  })}
+                />
+
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-white transition"
+                >
+                  {
+                    showPassword
+                      ? <EyeOff size={20} />
+                      : <Eye size={20} />
+                  }
+                </button>
+              </div>
             </div>
-              <Button
-                type="submit"
-                className="w-full bg-white text-black hover:bg-zinc-200 transition rounded-xl py-3 font-semibold"
-              >Sign in</Button>
+
+            <Button
+              type="submit"
+              className="w-full bg-white text-black hover:bg-zinc-600 transition rounded-xl py-3 font-semibold"
+            >Sign in</Button>
           </form>
           <p className="text-center text-zinc-400 text-sm mt-6">
             Don't have an account?{""}
             <Link
-            to="/signup"
-            className="text-white hover:underline"
+              to="/signup"
+              className="text-white hover:underline"
             >
               Sign up
             </Link>
           </p>
-      </div>
-    </div >
+        </div>
+      </div >
     </>
   );
 }

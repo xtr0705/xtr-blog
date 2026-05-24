@@ -2,9 +2,10 @@ import { useDispatch } from "react-redux";
 import authService from "../appwrite/auth.js";
 import { login as authLogin } from "../store/AuthSlice.js";
 import { useState } from "react";
-import { Button, Input } from "../components/index.js";
+import { Input, Button } from "../components/index.js";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+import { Eye, EyeOff } from "lucide-react";
 
 function Signup() {
 
@@ -12,6 +13,7 @@ function Signup() {
   const [error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
   const signup = async (data) => {
 
     setError("");
@@ -22,9 +24,9 @@ function Signup() {
       if (details) {
         const userData = await authService.getCurrentUser();
         const mainUserData = {
-          id:userData.$id,
-          name:userData.name,
-          email:userData.email
+          id: userData.$id,
+          name: userData.name,
+          email: userData.email
         }
 
         if (userData) {
@@ -75,14 +77,14 @@ function Signup() {
               Username
             </label>
 
-            <Input 
+            <Input
               type="text"
               placeholder="Enter username"
-              className="w-full"
-              {...register("name",{
-                required:true,
-                minLength:5,
-                maxLength:16
+              className="w-full text-white"
+              {...register("name", {
+                required: true,
+                minLength: 5,
+                maxLength: 16
               })}
             />
           </div>
@@ -95,7 +97,7 @@ function Signup() {
             <Input
               type="email"
               placeholder="Enter your email"
-              className="w-full"
+              className="w-full text-white"
               {...register("email", {
                 required: true,
                 validate: {
@@ -113,30 +115,40 @@ function Signup() {
               Password
             </label>
 
-            <Input
-              type="password"
-              placeholder="Create a password"
-              className="w-full"
-              {...register("password", {
-                required: true,
-                validate: {
-                  matchPattern: (value) =>
-                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).+$/.test(value)
-                    || "Password must contain uppercase, lowercase, number and special character"
+            <div className="relative" >
+
+              <Input
+                type={showPassword ? "text" : "password"}
+                placeholder="Create a password"
+                className="w-full text-white"
+                {...register("password", {
+                  required: true,
+                  validate: {
+                    matchPattern: (value) =>
+                      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).+$/.test(value)
+                      || "Password must contain uppercase, lowercase, number and special character"
+                  }
+                })}
+              />
+
+
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-white transition"
+              >
+                {
+                  showPassword
+                    ? <EyeOff size={20} />
+                    : <Eye size={20} />
                 }
-              })}
-            />
-
+              </button>
+            </div>
           </div>
-
           <Button
-            
             type="submit"
-            className="w-full text-black hover:bg-zinc-200 hover:text-blue-600 transition rounded-xl py-3 font-semibold"
-          >
-            Create Account
-          </Button>
-
+            className="w-full bg-white text-black hover:bg-zinc-600 transition rounded-xl py-3 font-semibold"
+          >Sign in</Button>
         </form>
 
         <p className="text-center text-zinc-400 text-sm mt-6">

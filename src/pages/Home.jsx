@@ -47,7 +47,7 @@ export default function Home() {
               <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 h-52 flex flex-col justify-between">
                 <div>
                   <p className="text-zinc-500 text-sm mb-2">Feature</p>
-                  <h3 className="text-2xl font-bold">Authentication</h3>
+                  <h3 className="text-xl sm:text-2xl font-bold">Authentication</h3>
                 </div>
 
                 <p className="text-zinc-400 text-sm">
@@ -55,10 +55,10 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 h-52 flex flex-col justify-between mt-8">
+              <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-4 sm:p-6 h-52 flex flex-col justify-between mt-8">
                 <div>
                   <p className="text-zinc-500 text-sm mb-2">Feature</p>
-                  <h3 className="text-2xl font-bold">Image Uploads</h3>
+                  <h3 className="text-xl sm:text-2xl font-bold">Image Uploads</h3>
                 </div>
 
                 <p className="text-zinc-400 text-sm">
@@ -66,10 +66,10 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 h-52 flex flex-col justify-between -mt-8">
+              <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-4 sm:p-6 h-52 flex flex-col justify-between -mt-8">
                 <div>
                   <p className="text-zinc-500 text-sm mb-2">Feature</p>
-                  <h3 className="text-2xl font-bold">CRUD System</h3>
+                  <h3 className="text-xl sm:text-2xl font-bold">CRUD System</h3>
                 </div>
 
                 <p className="text-zinc-400 text-sm">
@@ -77,10 +77,10 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 h-52 flex flex-col justify-between">
+              <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-4 sm:p-6 h-52 flex flex-col justify-between">
                 <div>
                   <p className="text-zinc-500 text-sm mb-2">Feature</p>
-                  <h3 className="text-2xl font-bold">Responsive UI</h3>
+                  <h3 className="text-xl sm:text-2xl font-bold">Responsive UI</h3>
                 </div>
 
                 <p className="text-zinc-400 text-sm">

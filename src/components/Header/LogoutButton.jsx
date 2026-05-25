@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import authService from "../../appwrite/auth";
-import { logout } from "../../store/AuthSlice";
+import { logout } from "../../store/authSlice.js";
 import Button from "../Input/Button";
 import { useNavigate } from "react-router-dom";
 

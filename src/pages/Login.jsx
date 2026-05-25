@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { Input, Button } from '../components/index.js'
-import { login as authLogin } from "../store/AuthSlice.js";
+import { login as authLogin } from "../store/authSlice.js";
 import { useForm } from "react-hook-form";
 import authService from "../appwrite/auth.js";
 import { useState } from "react";

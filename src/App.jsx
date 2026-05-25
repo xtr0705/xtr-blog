@@ -7,7 +7,7 @@ import Footer from "./components/Footer/Footer";
 import { Routes, Route } from "react-router-dom";
 import ViewPost from "./pages/ViewPost";
 import AllPosts from "./pages/AllPosts";
-import CreatePost from "./pages/createPost";
+import CreatePost from "./pages/CreatePost.jsx";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Home from "./pages/Home";

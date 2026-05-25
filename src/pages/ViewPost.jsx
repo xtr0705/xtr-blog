@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from '../components/index.js'
 import { useSelector } from "react-redux";
+import PageFadeIn from "../components/PageFadeIn.jsx";
 
 function ViewPost() {
 
@@ -73,69 +74,70 @@ function ViewPost() {
     )
   } else {
     return (
-      <div className="min-h-screen bg-zinc-950 text-white px-3 sm:px-4 py-8 md:py-14">
+      <PageFadeIn>
+        <div className="min-h-screen bg-zinc-950 text-white px-3 sm:px-4 py-8 md:py-14">
 
-        <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto">
 
-          <div className="mb-6 md:mb-8">
+            <div className="mb-6 md:mb-8">
 
-            <p className="text-[10px] sm:text-sm uppercase tracking-[0.25em] text-zinc-500 mb-3 md:mb-4">
-              Blog Post
-            </p>
-
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-black font-[Sora] leading-tight mb-4">
-              {data.title}
-            </h1>
-
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-
-              <p className="text-zinc-500 text-xs sm:text-sm">
-                {data.name}
+              <p className="text-[10px] sm:text-sm uppercase tracking-[0.25em] text-zinc-500 mb-3 md:mb-4">
+                Blog Post
               </p>
 
-              <p className="text-zinc-500 text-xs sm:text-sm">
-                {new Date(data.$createdAt).toDateString()}
-              </p>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-black font-[Sora] leading-tight mb-4">
+                {data.title}
+              </h1>
+
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+
+                <p className="text-zinc-500 text-xs sm:text-sm">
+                  {data.name}
+                </p>
+
+                <p className="text-zinc-500 text-xs sm:text-sm">
+                  {new Date(data.$createdAt).toDateString()}
+                </p>
+
+                {
+                  userData && userData.id === data.userId && (
+                    <Button
+                      className="w-full sm:w-auto bg-red-500 hover:bg-red-600 text-white px-5 py-2.5 rounded-xl transition text-sm font-medium"
+                      onClick={deletePost}
+                    >
+                      Delete Post
+                    </Button>
+                  )
+                }
+
+              </div>
+            </div>
+
+            <div className="overflow-hidden rounded-2xl md:rounded-3xl border border-zinc-800 mb-6 md:mb-10 max-w-4xl mx-auto">
 
               {
-                userData && userData.id === data.userId && (
-                  <Button
-                    className="w-full sm:w-auto bg-red-500 hover:bg-red-600 text-white px-5 py-2.5 rounded-xl transition text-sm font-medium"
-                    onClick={deletePost}
-                  >
-                    Delete Post
-                  </Button>
+                data.featuredImage &&(
+                  <img
+                  src={appwriteService.getFileView(data.featuredImage)}
+                  className="w-full h-52 sm:h-72 md:h-96 object-cover"
+                  />
                 )
               }
 
             </div>
-          </div>
 
-          <div className="overflow-hidden rounded-2xl md:rounded-3xl border border-zinc-800 mb-6 md:mb-10 max-w-4xl mx-auto">
+            <div className="bg-zinc-900 border border-zinc-800 rounded-2xl md:rounded-3xl p-5 sm:p-6 md:p-10">
 
-            {
-              data.featuredImage &&(
-                <img
-                src={appwriteService.getFileView(data.featuredImage)}
-                className="w-full h-52 sm:h-72 md:h-96 object-cover"
-                />
-              )
-            }
+              <p className="text-zinc-300 text-base sm:text-lg leading-7 sm:leading-relaxed whitespace-pre-wrap break-words">
+                {data.content}
+              </p>
 
-          </div>
-
-          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl md:rounded-3xl p-5 sm:p-6 md:p-10">
-
-            <p className="text-zinc-300 text-base sm:text-lg leading-7 sm:leading-relaxed whitespace-pre-wrap break-words">
-              {data.content}
-            </p>
+            </div>
 
           </div>
 
         </div>
-
-      </div>
-
+      </PageFadeIn>
     );
   }
 }

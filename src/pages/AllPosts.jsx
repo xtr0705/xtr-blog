@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import appwriteService from "../appwrite/config";
 import { Link } from "react-router-dom";
+import PageFadeIn from "../components/PageFadeIn";
 
 function AllPosts() {
 
@@ -49,93 +50,97 @@ function AllPosts() {
     )
   } else {
 
+
+
     return (
-      <div className="min-h-screen bg-zinc-950 text-white px-4 py-10 md:py-14">
+      <PageFadeIn>
+        <div className="min-h-screen bg-zinc-950 text-white px-4 py-10 md:py-14">
 
-        <div className="max-w-7xl mx-auto">
+          <div className="max-w-7xl mx-auto">
 
-          <div className="mb-10">
+            <div className="mb-10">
 
-            <p className="text-sm uppercase tracking-[0.3em] text-zinc-500 mb-4">
-              Explore
-            </p>
+              <p className="text-sm uppercase tracking-[0.3em] text-zinc-500 mb-4">
+                Explore
+              </p>
 
-            <h1 className="text-4xl md:text-5xl font-black font-[Sora] leading-tight mb-4">
-              Community
-              <span className="italic font-[Serif] font-thin text-zinc-400 block">
-                Posts
-              </span>
-            </h1>
+              <h1 className="text-4xl md:text-5xl font-black font-[Sora] leading-tight mb-4">
+                Community
+                <span className="italic font-[Serif] font-thin text-zinc-400 block">
+                  Posts
+                </span>
+              </h1>
 
-            <p className="text-zinc-400 text-lg max-w-2xl">
-              Read thoughts, opinions, questionable late-night ideas, and everything in between.
-            </p>
+              <p className="text-zinc-400 text-lg max-w-2xl">
+                Read thoughts, opinions, questionable late-night ideas, and everything in between.
+              </p>
 
-          </div>
+            </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
 
-            {posts.map((post) => (
+              {posts.map((post) => (
 
-              <Link
-                to={`/post/${post.$id}`}
-                key={post.$id}
-                className="group"
-              >
+                <Link
+                  to={`/post/${post.$id}`}
+                  key={post.$id}
+                  className="group"
+                >
 
-                <div className="h-full bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-zinc-700 hover:bg-zinc-900/80 transition duration-300 hover:-translate-y-1">
+                  <div className="h-full bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-zinc-700 hover:bg-zinc-900/80 transition duration-300 hover:shadow-xl hover:-translate-y-1">
 
 
-                  <div className="overflow-hidden">
+                    <div className="overflow-hidden">
 
-                    {
-                      post.featuredImage && (
-                        <img
-                          src={getImage(post.featuredImage)}
-                          alt={post.title}
-                          className="w-full h-44 object-cover group-hover:scale-105 transition duration-500"
-                        />
-                      )
-                    }
+                      {
+                        post.featuredImage && (
+                          <img
+                            src={getImage(post.featuredImage)}
+                            alt={post.title}
+                            className="w-full h-44 object-cover group-hover:scale-105 transition duration-500"
+                          />
+                        )
+                      }
+
+                    </div>
+
+                    <div className="p-5">
+
+                      <p className="text-zinc-500 text-xs mb-3">
+                        By {post.name}
+                      </p>
+                      <p className="text-zinc-500 text-xs mb-3">
+                        On {new Date(post.$createdAt).toDateString()}
+                      </p>
+
+                      <h2 className="text-xl font-bold text-white mb-3 line-clamp-1">
+
+                        {post.title
+                          ? post.title
+                          : post.content.slice(0, 40)}
+
+                      </h2>
+
+                      <p className="text-zinc-400 text-sm leading-relaxed line-clamp-3">
+
+                        {post.content.slice(0, 90)}...
+
+                      </p>
+
+                    </div>
 
                   </div>
 
-                  <div className="p-5">
+                </Link>
 
-                    <p className="text-zinc-500 text-xs mb-3">
-                      By {post.name}
-                    </p>
-                    <p className="text-zinc-500 text-xs mb-3">
-                      On {new Date(post.$createdAt).toDateString()}
-                    </p>
+              ))}
 
-                    <h2 className="text-xl font-bold text-white mb-3 line-clamp-1">
-
-                      {post.title
-                        ? post.title
-                        : post.content.slice(0, 40)}
-
-                    </h2>
-
-                    <p className="text-zinc-400 text-sm leading-relaxed line-clamp-3">
-
-                      {post.content.slice(0, 90)}...
-
-                    </p>
-
-                  </div>
-
-                </div>
-
-              </Link>
-
-            ))}
+            </div>
 
           </div>
 
         </div>
-
-      </div>
+      </PageFadeIn>
     );
   }
 }

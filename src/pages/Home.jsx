@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import PageFadeIn from "../components/PageFadeIn";
 
 export default function Home() {
@@ -26,19 +27,19 @@ export default function Home() {
               </p>
 
               <div className="flex flex-wrap gap-4">
-                <a
+                <Link
                   href="/all-posts"
                   className="bg-white text-black px-6 py-3 rounded-xl font-semibold hover:bg-zinc-200 transition"
                 >
                   Explore Posts
-                </a>
+                </Link>
 
-                <a
+                <Link
                   href="/add-post"
                   className="border border-zinc-700 px-6 py-3 rounded-xl font-semibold hover:bg-zinc-900 transition"
                 >
                   Create Post
-                </a>
+                </Link>
               </div>
             </div>
 

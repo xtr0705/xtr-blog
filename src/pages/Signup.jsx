@@ -10,14 +10,14 @@ import PageFadeIn from "../components/PageFadeIn.jsx";
 
 function Signup() {
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const [error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const [loading,setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   const signup = async (data) => {
-
+    setLoading(true)
     setError("");
 
     try {
@@ -103,12 +103,24 @@ function Signup() {
                   placeholder="Enter username"
                   className="w-full text-white"
                   {...register("name", {
-                    required: true,
-                    minLength: 5,
-                    maxLength: 16
+                    required: "Username is required",
+                    minLength: {
+                      value: 5,
+                      message: "Username must be at least 5 characters"
+                    },
+                    maxLength: {
+                      value: 16,
+                      message: "Username cannot exceed 16 characters"
+                    }
                   })}
                 />
+                {
+                  errors.name && (
+                    <p className="text-red-400 text-sm mt-2"  >{errors.name.message}</p>
+                  )
+                }
               </div>
+
 
               <div>
                 <label className="block text-sm font-medium text-zinc-300 mb-2">
@@ -120,14 +132,20 @@ function Signup() {
                   placeholder="Enter your email"
                   className="w-full text-white"
                   {...register("email", {
-                    required: true,
+                    required: "Email is required",
                     validate: {
                       matchPattern: (value) =>
                         /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)
                         || "Enter valid email"
                     }
                   })}
+
                 />
+                {
+                  errors.email && (
+                    <p className="text-red-400 text-sm mt-2"  >{errors.email.message}</p>
+                  )
+                }
               </div>
 
               <div>
@@ -143,7 +161,7 @@ function Signup() {
                     placeholder="Create a password"
                     className="w-full text-white"
                     {...register("password", {
-                      required: true,
+                      required: "Password is required",
                       validate: {
                         matchPattern: (value) =>
                           /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).+$/.test(value)
@@ -151,6 +169,7 @@ function Signup() {
                       }
                     })}
                   />
+
 
 
                   <button
@@ -165,11 +184,16 @@ function Signup() {
                     }
                   </button>
                 </div>
+                {
+                  errors.password && (
+                    <p className="text-red-400 text-sm mt-2"  >{errors.password.message}</p>
+                  )
+                }
               </div>
               <Button
                 type="submit"
                 className="w-full bg-white text-black hover:bg-zinc-600 transition rounded-xl py-3 font-semibold"
-              >Sign in</Button>
+              >Create Account</Button>
             </form>
 
             <p className="text-center text-zinc-400 text-sm mt-6">

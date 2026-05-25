@@ -12,11 +12,12 @@ function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [error, setError] = useState('');
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const Login = async ({ email, password }) => {
+    setLoading(true);
     try {
       const session = await authService.login(
         {
@@ -90,14 +91,22 @@ function Login() {
                     className='w-full text-white'
                     placeholder='enter your email'
                     {...register('email', {
-                      required: true,
+                      required: "Email is required",
                       validate: {
                         matchPattern: (value) => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value) || 'Email address must be a valid address'
                       }
-                    })
-                    }
+                    })}
                   />
+
+                {
+                  errors.email && (
+                    <p className="text-red-400 text-sm mt-2">
+                      {errors.email.message}
+                    </p>
+                  )
+                }
                 </div>
+
 
                 <div>
                   <label className="block text-sm font-medium text-zinc-300 mb-2">
@@ -110,9 +119,16 @@ function Login() {
                       className='w-full text-white'
                       placeholder='enter your password'
                       {...register('password', {
-                        required: true
+                        required: "Password is required"
                       })}
                     />
+                     {
+                    errors.password && (
+                      <p className="text-red-400 text-sm mt-2">
+                        {errors.password.message}
+                      </p>
+                    )
+                  }
 
                     <button
                       type="button"
@@ -126,6 +142,7 @@ function Login() {
                       }
                     </button>
                   </div>
+                 
                 </div>
 
                 <Button

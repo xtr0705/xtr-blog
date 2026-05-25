@@ -28,14 +28,14 @@ export default function Home() {
 
               <div className="flex flex-wrap gap-4">
                 <Link
-                  href="/all-posts"
+                  to="/all-posts"
                   className="bg-white text-black px-6 py-3 rounded-xl font-semibold hover:bg-zinc-200 transition"
                 >
                   Explore Posts
                 </Link>
 
                 <Link
-                  href="/add-post"
+                  to="/add-post"
                   className="border border-zinc-700 px-6 py-3 rounded-xl font-semibold hover:bg-zinc-900 transition"
                 >
                   Create Post

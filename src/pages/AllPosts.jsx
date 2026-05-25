@@ -4,18 +4,26 @@ import { Link } from "react-router-dom";
 
 function AllPosts() {
 
+  const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const data = await appwriteService.getPosts();
+      try {
+        const data = await appwriteService.getPosts();
+        console.log(data)
+        if (data) {
+          setPosts(data.documents)
+        }
 
-      if (data) {
-        setPosts(data.documents)
+      } catch (error) {
+        console.log('error occured fetching all posts', error);
+      } finally {
+        setLoading(false);
       }
     }
-
     fetchPosts();
+
   }, [])
 
   const getImage = (img) => {
@@ -23,91 +31,113 @@ function AllPosts() {
     return url
   }
 
-  return (
-    <div className="min-h-screen bg-zinc-950 text-white px-4 py-10 md:py-14">
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-zinc-950 flex items-center justify-center">
 
-  <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col items-center gap-4">
 
-    <div className="mb-10">
+          <div className="w-10 h-10 border-4 border-zinc-700 border-t-white rounded-full animate-spin"></div>
 
-      <p className="text-sm uppercase tracking-[0.3em] text-zinc-500 mb-4">
-        Explore
-      </p>
+          <p className="text-zinc-400 text-sm">
+            Loading posts...
+          </p>
 
-      <h1 className="text-4xl md:text-5xl font-black font-[Sora] leading-tight mb-4">
-        Community
-        <span className="italic font-[Serif] font-thin text-zinc-400 block">
-          Posts
-        </span>
-      </h1>
+        </div>
 
-      <p className="text-zinc-400 text-lg max-w-2xl">
-        Read thoughts, opinions, questionable late-night ideas, and everything in between.
-      </p>
+      </div>
+    )
+  } else {
 
-    </div>
+    return (
+      <div className="min-h-screen bg-zinc-950 text-white px-4 py-10 md:py-14">
 
-    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        <div className="max-w-7xl mx-auto">
 
-      {posts.map((post) => (
+          <div className="mb-10">
 
-        <Link
-          to={`/post/${post.$id}`}
-          key={post.$id}
-          className="group"
-        >
+            <p className="text-sm uppercase tracking-[0.3em] text-zinc-500 mb-4">
+              Explore
+            </p>
 
-          <div className="h-full bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-zinc-700 hover:bg-zinc-900/80 transition duration-300 hover:-translate-y-1">
+            <h1 className="text-4xl md:text-5xl font-black font-[Sora] leading-tight mb-4">
+              Community
+              <span className="italic font-[Serif] font-thin text-zinc-400 block">
+                Posts
+              </span>
+            </h1>
 
-
-            <div className="overflow-hidden">
-
-              {
-                post.featuredImage &&(
-                  <img
-                  src={getImage(post.featuredImage)}
-                  alt={post.title}
-                  className="w-full h-44 object-cover group-hover:scale-105 transition duration-500"
-                  />
-                )
-              }
-
-            </div>
-
-            <div className="p-5">
-
-              <p className="text-zinc-500 text-xs mb-3">
-                {new Date(post.$createdAt).toDateString()}
-              </p>
-
-              <h2 className="text-xl font-bold text-white mb-3 line-clamp-1">
-
-                {post.title
-                  ? post.title
-                  : post.content.slice(0, 40)}
-
-              </h2>
-
-              <p className="text-zinc-400 text-sm leading-relaxed line-clamp-3">
-
-                {post.content.slice(0, 90)}...
-
-              </p>
-
-            </div>
+            <p className="text-zinc-400 text-lg max-w-2xl">
+              Read thoughts, opinions, questionable late-night ideas, and everything in between.
+            </p>
 
           </div>
 
-        </Link>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
 
-      ))}
+            {posts.map((post) => (
 
-    </div>
+              <Link
+                to={`/post/${post.$id}`}
+                key={post.$id}
+                className="group"
+              >
 
-  </div>
+                <div className="h-full bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-zinc-700 hover:bg-zinc-900/80 transition duration-300 hover:-translate-y-1">
 
-</div>
-  );
+
+                  <div className="overflow-hidden">
+
+                    {
+                      post.featuredImage && (
+                        <img
+                          src={getImage(post.featuredImage)}
+                          alt={post.title}
+                          className="w-full h-44 object-cover group-hover:scale-105 transition duration-500"
+                        />
+                      )
+                    }
+
+                  </div>
+
+                  <div className="p-5">
+
+                    <p className="text-zinc-500 text-xs mb-3">
+                      By {post.name}
+                    </p>
+                    <p className="text-zinc-500 text-xs mb-3">
+                      On {new Date(post.$createdAt).toDateString()}
+                    </p>
+
+                    <h2 className="text-xl font-bold text-white mb-3 line-clamp-1">
+
+                      {post.title
+                        ? post.title
+                        : post.content.slice(0, 40)}
+
+                    </h2>
+
+                    <p className="text-zinc-400 text-sm leading-relaxed line-clamp-3">
+
+                      {post.content.slice(0, 90)}...
+
+                    </p>
+
+                  </div>
+
+                </div>
+
+              </Link>
+
+            ))}
+
+          </div>
+
+        </div>
+
+      </div>
+    );
+  }
 }
 
 export default AllPosts;

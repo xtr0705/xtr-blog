@@ -98,13 +98,13 @@ function Login() {
                     })}
                   />
 
-                {
-                  errors.email && (
-                    <p className="text-red-400 text-sm mt-2">
-                      {errors.email.message}
-                    </p>
-                  )
-                }
+                  {
+                    errors.email && (
+                      <p className="text-red-400 text-sm mt-2">
+                        {errors.email.message}
+                      </p>
+                    )
+                  }
                 </div>
 
 
@@ -122,13 +122,13 @@ function Login() {
                         required: "Password is required"
                       })}
                     />
-                     {
-                    errors.password && (
-                      <p className="text-red-400 text-sm mt-2">
-                        {errors.password.message}
-                      </p>
-                    )
-                  }
+                    {
+                      errors.password && (
+                        <p className="text-red-400 text-sm mt-2">
+                          {errors.password.message}
+                        </p>
+                      )
+                    }
 
                     <button
                       type="button"
@@ -142,7 +142,7 @@ function Login() {
                       }
                     </button>
                   </div>
-                 
+
                 </div>
 
                 <Button

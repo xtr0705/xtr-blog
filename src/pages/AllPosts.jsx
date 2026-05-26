@@ -110,7 +110,7 @@ function AllPosts() {
                         By {post.name}
                       </p>
                       <p className="text-zinc-500 text-xs mb-3">
-                        On {new Date(post.$createdAt).toDateString()}
+                        On {new Date(post.$createdAt).toDateString().split(' ').slice(1).join(' ')}
                       </p>
 
                       <h2 className="text-xl font-bold text-white mb-3 line-clamp-1">

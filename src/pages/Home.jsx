@@ -43,7 +43,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 h-52 flex flex-col justify-between">
                 <div>
                   <p className="text-zinc-500 text-sm mb-2">Feature</p>
@@ -55,7 +55,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-4 sm:p-6 h-52 flex flex-col justify-between mt-8">
+              <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-4 sm:p-6 h-52 flex flex-col justify-between sm:mt-8">
                 <div>
                   <p className="text-zinc-500 text-sm mb-2">Feature</p>
                   <h3 className="text-xl sm:text-2xl font-bold">Image Uploads</h3>
@@ -66,7 +66,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-4 sm:p-6 h-52 flex flex-col justify-between -mt-8">
+              <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-4 sm:p-6 h-52 flex flex-col justify-between sm:-mt-8">
                 <div>
                   <p className="text-zinc-500 text-sm mb-2">Feature</p>
                   <h3 className="text-xl sm:text-2xl font-bold">CRUD System</h3>

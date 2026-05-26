@@ -23,10 +23,16 @@ function ViewPost() {
 
     const deleteFull = async () => {
       try {
-        const deleteImg = await appwriteService.deleteFile(data.featuredImage);
-        if (deleteImg) {
-          await appwriteService.deletePost({ slug });
+        const img =  data.featuredImage;
+        if (!img) {
+          await appwriteService.deletePost({slug});
           navigate('/all-posts');
+        }else{
+          const deleteImg = await appwriteService.deleteFile(img);
+          if (deleteImg) {
+            await appwriteService.deletePost({ slug });
+            navigate('/all-posts');
+          }
         }
       } catch (error) {
         console.log('Error deleting post:', error);

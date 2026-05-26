@@ -21,20 +21,18 @@ function CreatePost() {
       })
     }
 
-    if (uploadedFile) {
-      try{
-        await appwriteService.createPost({
-          title: data.title,
-          content: data.content,
-          featuredImage: uploadedFile ? uploadedFile.$id : null,
-          userId: userData.id,
-          name:userData.name
-        })
-      }catch(error){
-        console.log("error occured while creating post",error)
-        alert('error occured while creating post');
-      }
+    try{
+      await appwriteService.createPost({
+        title: data.title,
+        content: data.content,
+        featuredImage: uploadedFile ? uploadedFile.$id : null,
+        userId: userData.id,
+        name:userData.name
+      })
       navigate('/all-posts');
+    }catch(error){
+      console.log("error occured while creating post",error)
+      alert('error occured while creating post');
     }
   }
 

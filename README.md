@@ -104,7 +104,7 @@ VITE_BUCKET_ID=
 
 ## Live Demo
 
-https://your-netlify-link.netlify.app
+https://xtr-blog.netlify.app/
 
 ---
 

@@ -1,16 +1,111 @@
-# React + Vite
+# xtr.Blog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern full-stack blogging platform where users can create accounts, publish posts, upload optional featured images, and explore content from other users.
 
-Currently, two official plugins are available:
+Built using React, Appwrite, Redux Toolkit, Tailwind CSS, and Framer Motion.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- User Authentication
+- Create & Delete Posts
+- Optional Featured Images
+- Protected Delete Actions
+- Responsive UI
+- Smooth Page Transitions
+- Loading & Error Handling
+- Form Validation
+- Dark Modern UI Design
+- Mobile Friendly Layout
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech Stack
+
+### Frontend
+- React
+- React Router DOM
+- Redux Toolkit
+- React Hook Form
+- Tailwind CSS
+- Framer Motion
+- Lucide React
+
+### Backend
+- Appwrite Authentication
+- Appwrite Database
+- Appwrite Storage
+
+### Deployment
+- Netlify
+
+---
+
+## Running Locally
+
+Clone the repository:
+
+```bash
+git clone https://github.com/your-username/xtr-blog.git
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+---
+
+## Environment Variables
+
+Create a `.env` file in the root directory:
+
+```env
+VITE_APPWRITE_URL=
+VITE_APPWRITE_PROJECT_ID=
+VITE_DATABASE_ID=
+VITE_COLLECTION_ID=
+VITE_BUCKET_ID=
+```
+
+---
+
+## What I Learned While Building This
+
+- Authentication handling in full-stack apps
+- Backend integration using Appwrite
+- Async state management in React
+- Image upload & storage workflows
+- React Router deployment fixes on Netlify
+- Responsive UI architecture
+- Loading & validation patterns
+- Real-world debugging and deployment
+
+---
+
+## Future Improvements
+
+- Edit Posts
+- Comments System
+- Search Functionality
+- User Profiles
+- Like System
+- Rich Text Editor
+
+---
+
+## Live Demo
+
+https://xtr-blog.netlify.app/
+
+---
+
+Built by Salem Ali.

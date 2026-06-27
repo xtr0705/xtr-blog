@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import appwriteService from "../appwrite/config.js";
 import { useSelector } from "react-redux";
 import PageFadeIn from "../components/PageFadeIn.jsx";
+import TextEditor from "../components/TextEditor.jsx";
 
 function CreatePost() {
   const navigate = useNavigate();
@@ -101,11 +102,7 @@ function CreatePost() {
                 Content
               </label>
 
-              <textarea
-                placeholder="Write something cool..."
-                className="w-full min-h-[250px] bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-4 text-white placeholder:text-zinc-500 focus:outline-none focus:border-zinc-600 transition resize-none"
-                {...register('content')}
-              />
+              <TextEditor />
 
             </div>
 

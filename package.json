@@ -12,6 +12,9 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.11.2",
     "@tailwindcss/vite": "^4.3.0",
+    "@tiptap/pm": "^3.27.1",
+    "@tiptap/react": "^3.27.1",
+    "@tiptap/starter-kit": "^3.27.1",
     "appwrite": "^25.0.0",
     "framer-motion": "^12.40.0",
     "lucide-react": "^1.16.0",

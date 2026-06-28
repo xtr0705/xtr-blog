@@ -52,7 +52,7 @@ function TextEditor({
         : "bg-zinc-800 hover:bg-zinc-700"
     }`}
   >
-    <strong>B</strong>
+    <FaBold />
   </button>
 
   <button
@@ -64,7 +64,7 @@ function TextEditor({
         : "bg-zinc-800 hover:bg-zinc-700"
     }`}
   >
-    <em>I</em>
+    <FaItalic />
   </button>
 
   <button
@@ -106,8 +106,7 @@ function TextEditor({
         : "bg-zinc-800 hover:bg-zinc-700"
     }`}
   >
-    • List
-  </button>
+    <FaListUl />  </button>
 
   <button
     type="button"
@@ -120,7 +119,7 @@ function TextEditor({
         : "bg-zinc-800 hover:bg-zinc-700"
     }`}
   >
-    1. List
+    <FaListOl /> 
   </button>
 
   <button
@@ -134,8 +133,36 @@ function TextEditor({
         : "bg-zinc-800 hover:bg-zinc-700"
     }`}
   >
-    "
+    <FaQuoteLeft />
   </button>
+
+  <button
+  type="button"
+  onClick={() =>
+    editor.chain().focus().toggleCodeBlock().run()
+  }
+  className={`px-3 py-2 transition ${
+    editor.isActive("codeBlock")
+      ? "bg-violet-600 text-white"
+      : "bg-zinc-800 hover:bg-zinc-700"
+  }`}
+>
+  <FaCode />
+</button>
+
+<button
+  type="button"
+  onClick={() =>
+    editor.chain().focus().toggleCode().run()
+  }
+  className={`px-3 py-2 transition ${
+    editor.isActive("code")
+      ? "bg-violet-600 text-white"
+      : "bg-zinc-800 hover:bg-zinc-700"
+  }`}
+>
+  &lt;/&gt;
+</button>
 
   <button
     type="button"
@@ -144,7 +171,7 @@ function TextEditor({
     }
     className="px-3 py-2 bg-zinc-800 hover:bg-zinc-700 transition"
   >
-    ↺
+    <FaUndo />
   </button>
 
   <button
@@ -154,8 +181,22 @@ function TextEditor({
     }
     className="px-3 py-2 bg-zinc-800 hover:bg-zinc-700 transition"
   >
-    ↻
+    <FaRedo />
   </button>
+
+  <button
+  type="button"
+  onClick={() =>
+    editor.chain().focus().toggleStrike().run()
+  }
+  className={`px-3 py-2 transition ${
+    editor.isActive("strike")
+      ? "bg-violet-600 text-white"
+      : "bg-zinc-800 hover:bg-zinc-700"
+  }`}
+>
+  <FaStrikethrough />
+</button>
 
 </div>
       <EditorContent

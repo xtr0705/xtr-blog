@@ -1,26 +1,65 @@
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { useEffect } from "react";
+import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
+import { createLowlight } from "lowlight";
+import js from "highlight.js/lib/languages/javascript";
+import c from "highlight.js/lib/languages/c";
+import cpp from "highlight.js/lib/languages/cpp";
+import csharp from "highlight.js/lib/languages/csharp";
+import go from "highlight.js/lib/languages/go";
+import typescript from "highlight.js/lib/languages/typescript";
+import sql from "highlight.js/lib/languages/sql";
+import rust from "highlight.js/lib/languages/rust";
+import ruby from "highlight.js/lib/languages/ruby";
+import python from "highlight.js/lib/languages/python";
+import java from "highlight.js/lib/languages/java";
+import html from "highlight.js/lib/languages/xml";
+import r from "highlight.js/lib/languages/r";
+import css from "highlight.js/lib/languages/css";
 import {
   FaBold,
   FaItalic,
-  FaHeading,
   FaListUl,
   FaListOl,
   FaQuoteLeft,
   FaUndo,
   FaRedo,
   FaCode,
-  FaLink,
   FaStrikethrough,
 } from "react-icons/fa";
+
+const lowlight = createLowlight();
+
+lowlight.register("javascript", js);
+lowlight.register("html", html);
+lowlight.register("css", css);
+lowlight.register("c", c);
+lowlight.register("cpp", cpp);
+lowlight.register("java", java);
+lowlight.register("python", python);
+lowlight.register("ruby", ruby);
+lowlight.register("go", go);
+lowlight.register("csharp", csharp);
+lowlight.register("sql", sql);
+lowlight.register("rust", rust);
+lowlight.register("typescript", typescript);
+lowlight.register("r", r);
 
 function TextEditor({
   value,
   onChange
 }) {
   const editor = useEditor({
-    extensions: [StarterKit],
+    extensions: [
+  StarterKit.configure({
+    codeBlock: false,
+  }),
+
+  CodeBlockLowlight.configure({
+    lowlight,
+  }),
+],
     content: value,
     onUpdate({editor}){
       onChange(editor.getHTML());

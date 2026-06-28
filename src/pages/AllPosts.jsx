@@ -31,6 +31,16 @@ function AllPosts() {
     const url = appwriteService.getFileView(img);
     return url
   }
+  function getPreview(html, length = 120) {
+  const div = document.createElement("div");
+  div.innerHTML = html;
+
+  const text = div.textContent || "";
+
+  return text.length > length
+    ? text.slice(0, length) + "..."
+    : text;
+}
 
   if (loading) {
     return (
@@ -117,15 +127,13 @@ function AllPosts() {
 
                         {post.title
                           ? post.title
-                          : post.content.slice(0, 40)}
+                          : getPreview(post.content, 40)}
 
                       </h2>
 
                       <p className="text-zinc-400 text-sm leading-relaxed line-clamp-3">
-
-                        {post.content.slice(0, 90)}...
-
-                      </p>
+  {getPreview(post.content, 90)}
+</p>
 
                     </div>
 

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Input, Button } from '../components/index.js'
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import appwriteService from "../appwrite/config.js";
 import { useSelector } from "react-redux";
 import PageFadeIn from "../components/PageFadeIn.jsx";
@@ -8,7 +8,7 @@ import TextEditor from "../components/TextEditor.jsx";
 
 function CreatePost() {
   const navigate = useNavigate();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, control } = useForm();
 
   const userData = useSelector(
     (state) => state.auth.userData
@@ -17,22 +17,22 @@ function CreatePost() {
   const uploadPost = async (data) => {
     let uploadedFile = null;
     if (data.image && data.image[0]) {
-      uploadedFile=await appwriteService.createFile({
-        file:data.image[0]
+      uploadedFile = await appwriteService.createFile({
+        file: data.image[0]
       })
     }
 
-    try{
+    try {
       await appwriteService.createPost({
         title: data.title,
         content: data.content,
         featuredImage: uploadedFile ? uploadedFile.$id : null,
         userId: userData.id,
-        name:userData.name
+        name: userData.name
       })
       navigate('/all-posts');
-    }catch(error){
-      console.log("error occured while creating post",error)
+    } catch (error) {
+      console.log("error occured while creating post", error)
       alert('error occured while creating post');
     }
   }
@@ -102,7 +102,17 @@ function CreatePost() {
                 Content
               </label>
 
-              <TextEditor />
+              <Controller
+                name="content"
+                control={control}
+                defaultValue=""
+                render={({ field }) => (
+                  <TextEditor
+                    value={field.value}
+                    onChange={field.onChange}
+                  />
+                )}
+              />
 
             </div>
 

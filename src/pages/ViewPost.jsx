@@ -54,6 +54,9 @@ function ViewPost() {
 
   }, [slug])
 
+
+  
+
   if (!data) {
     return (
       <div className="min-h-screen bg-zinc-950 flex items-center justify-center px-4">
@@ -135,10 +138,10 @@ function ViewPost() {
 
             <div className="bg-zinc-900 border border-zinc-800 rounded-2xl md:rounded-3xl p-5 sm:p-6 md:p-10">
 
-              <p className="text-zinc-300 text-base sm:text-lg leading-7 sm:leading-relaxed whitespace-pre-wrap break-words">
-                {data.content}
-              </p>
-
+              <div className="blog-content"
+              dangerouslySetInnerHTML={{
+                __html:data.content}}
+              />
             </div>
 
           </div>

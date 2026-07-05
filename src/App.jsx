@@ -12,8 +12,10 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import AuthFlow from "./components/AuthFlow";
+import { useTheme } from "./context/ThemeContext";
 
 function App() {
+  const { theme, toggleTheme } = useTheme();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
 
@@ -22,9 +24,9 @@ function App() {
       .then((userData) => {
         if (userData) {
           const mainUserData = {
-            id:userData.$id,
-            name:userData.name,
-            email:userData.email
+            id: userData.$id,
+            name: userData.name,
+            email: userData.email
           }
           dispatch(login(mainUserData))
         } else {
@@ -41,62 +43,68 @@ function App() {
       <div className='min-h-screen flex flex-wrap content-between bg-gray-400' >
         <div className='w-full block' >
           <Header />
+          <button
+            onClick={toggleTheme}
+            className="fixed top-4 right-4 z-50 px-4 py-2 bg-zinc-800 text-white"
+          >
+            {theme === "dark" ? "🌙 Dark" : "☀️ Light"}
+          </button>
 
           <Routes>
 
             <Route
               path="/"
               element={
-              <AuthFlow authentication={true} >
-                <Home />
-              </AuthFlow>
-            
-            }
+                <AuthFlow authentication={true} >
+                  <Home />
+                </AuthFlow>
+
+              }
             />
 
             <Route
               path="/login"
               element={
-              <AuthFlow authentication={false}>
-                <Login/>
-              </AuthFlow>
-            }
+                <AuthFlow authentication={false}>
+                  <Login />
+                </AuthFlow>
+              }
             />
 
             <Route
               path="/signup"
               element={
-              <AuthFlow authentication={false} >
-                <Signup />
-              </AuthFlow>
-            }
+                <AuthFlow authentication={false} >
+                  <Signup />
+                </AuthFlow>
+              }
             />
 
             <Route
               path="/all-posts"
               element={
-              <AuthFlow authentication={true} >
-                <AllPosts />
-              </AuthFlow>
-            
-            }
+                <AuthFlow authentication={true} >
+                  <AllPosts />
+                </AuthFlow>
+
+              }
             />
 
             <Route
               path="/add-post"
               element={
-              <AuthFlow authentication={true} >
-                <CreatePost />
-              </AuthFlow>}
+                <AuthFlow authentication={true} >
+                  <CreatePost />
+                </AuthFlow>}
             />
 
             <Route
               path="/post/:slug"
               element={
-              <AuthFlow authentication={true} >
-                <ViewPost />
-              </AuthFlow>
-            }
+                <AuthFlow authentication={true} >
+                  <ViewPost />
+                </AuthFlow>
+              }
             />
 
           </Routes>

@@ -29,13 +29,13 @@ function Header() {
     }
   ]
   return (
-    <header className='w-full border-b border-zinc-800 bg-zinc-950 sticky top-0 z-50 backdrop-blur'>
+    <header className="sticky top-0 z-50 w-full border-b border-[var(--border)] bg-[var(--surface)] backdrop-blur">
 
       <div className='max-w-7xl mx-auto px-3 md:px-6 py-3 md:py-4 grid grid-cols-3 items-center'>
 
         <Link
           to="/"
-          className="text-xl md:text-3xl font-black text-white tracking-tight hover:text-zinc-300 transition"
+          className="text-xl md:text-3xl font-black tracking-tight text-[var(--text)] transition hover:text-[var(--text-secondary)]"
         >
           xtr.Blog
         </Link>
@@ -51,7 +51,7 @@ function Header() {
                 >
                   <button
                     onClick={() => navigate(item.slug)}
-                    className='text-zinc-300 hover:text-white transition text-sm md:text-base font-medium capitalize'
+                    className="text-sm font-medium capitalize transition md:text-base text-[var(--text-secondary)] hover:text-[var(--text)]"
                   >
                     {item.name}
                   </button>

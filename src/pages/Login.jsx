@@ -52,7 +52,7 @@ function Login() {
 
           <div className="w-10 h-10 border-4 border-zinc-700 border-t-white rounded-full animate-spin"></div>
 
-          <p className="text-zinc-400 text-sm">
+          <p className="text-[var(--text-secondary)] text-sm">
             Logging in...
           </p>
 
@@ -66,15 +66,21 @@ function Login() {
     return (
       <>
         <PageFadeIn>
-          <div className="min-h-screen bg-zinc-950 flex items-center justify-center px-4">
-            <div className={`w-full max-w-md bg-zinc-900 border border-zinc-800 rounded-3xl p-8 shadow-2xl`} >
+          <div className="min-h-screen bg-(--bg) flex items-center justify-center px-4">
+            <div className="w-full max-w-md bg-(--surface) border border-(--border) rounded-2xl p-8 shadow-xl" >
               <div className="mb-8 text-center" >
+                <Link
+                  to="/"
+                  className="text-2xl font-black tracking-tight text-[var(--text)]"
+                >
+                  xtr.Blog
+                </Link> 
 
-                <h1 className="text-4xl font-black text-white mb-3" >
+                <h1 className="text-4xl font-black text-[var(--text)] mb-3" >
                   Welcome Back
                 </h1>
 
-                <p className="text-zinc-400">
+                <p className="text-(--text-secondary)">
                   Sign in to continue to your account
                 </p>
               </div>
@@ -83,7 +89,7 @@ function Login() {
 
               <form onSubmit={handleSubmit(Login)} className="space-y-5" >
                 <div>
-                  <label className="block text-sm font-medium text-zinc-300 mb-2">
+                  <label className="block text-sm font-medium text-(--text) mb-2">
                     Email
                   </label>
                   <Input
@@ -109,7 +115,7 @@ function Login() {
 
 
                 <div>
-                  <label className="block text-sm font-medium text-zinc-300 mb-2">
+                  <label className="block text-sm font-medium text-[var(--text)] mb-2">
                     Password
                   </label>
 
@@ -133,7 +139,7 @@ function Login() {
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-white transition"
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-(--text-secondary) hover:text-[var(--text)]transition"
                     >
                       {
                         showPassword
@@ -147,14 +153,14 @@ function Login() {
 
                 <Button
                   type="submit"
-                  className="w-full bg-white text-black hover:bg-zinc-600 transition rounded-xl py-3 font-semibold"
+                  className="w-full py-3 rounded-xl"
                 >Sign in</Button>
               </form>
-              <p className="text-center text-zinc-400 text-sm mt-6">
+              <p className="text-center text-[var(--text-secondary)] text-sm mt-6">
                 Don't have an account?{""}
                 <Link
                   to="/signup"
-                  className="text-white hover:underline"
+                  className="text-(--text) hover:underline"
                 >
                   Sign up
                 </Link>

@@ -40,24 +40,24 @@ function CreatePost() {
 
   return (
     <PageFadeIn>
-      <div className="min-h-screen bg-zinc-950 text-white px-4 py-10 md:py-16">
+      <div className="min-h-screen bg-[var(--bg)] text-[var(--text)] px-4 py-10 md:py-16">
 
         <div className="max-w-3xl mx-auto">
 
           <div className="mb-10">
 
-            <p className="text-sm uppercase tracking-[0.3em] text-zinc-500 mb-4">
+            <p className="text-sm uppercase tracking-[0.3em] text-[var(--text-secondary)] mb-4">
               Create
             </p>
 
             <h1 className="text-4xl md:text-5xl font-black leading-tight mb-4">
               Write Something
-              <span className="font-[Serif] font-thin italic block text-zinc-400">
+              <span className="font-[Serif] font-thin italic block text-[var(--text-secondary)]">
                 Interesting
               </span>
             </h1>
 
-            <p className="text-zinc-400 text-lg">
+            <p className="text-[var(--text-secondary)] text-lg">
               Drop your thoughts before they disappear forever.
             </p>
 
@@ -65,32 +65,43 @@ function CreatePost() {
 
           <form
             onSubmit={handleSubmit(uploadPost)}
-            className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 md:p-8 space-y-6"
+            className="bg-[var(--surface)]
+              border-[var(--border)]
+              rounded-2xl p-6 md:p-8 space-y-6"
           >
 
             <div>
-              <label className="block text-sm font-medium text-zinc-300 mb-3">
+              <label className="block text-sm font-medium text-[var(--text)] mb-3">
                 Featured Image
               </label>
 
               <Input
                 type="file"
                 className="
-                w-full bg-zinc-950 focus:bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-zinc-400 focus:outline-none file:bg-black file:text-white file:border file:border-zinc-700 file:rounded-lg file:px-4 file:py-2 file:mr-4 file:hover:bg-zinc-900 focus:border-zinc-600 transition"
+                file:bg-[var(--surface-2)]
+                file:text-[var(--text)]
+                file:border
+                file:border-[var(--border)]
+                file:rounded-lg
+                file:px-4
+                file:py-2
+                file:mr-4
+                file:hover:bg-[var(--hover)]
+                "
                 {...register('image')}
               />
             </div>
 
             <div>
 
-              <label className="block text-sm font-medium text-zinc-300 mb-3">
+              <label className="block text-sm font-medium text-[var(--text)] mb-3">
                 Title
               </label>
 
               <Input
                 type="text"
                 placeholder="Enter your blog title..."
-                className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-4 text-white placeholder:text-zinc-500 focus:outline-none focus:border-zinc-600 transition"
+                className="py-4"
                 {...register('title')}
               />
 
@@ -98,9 +109,15 @@ function CreatePost() {
 
             <div>
 
-              <label className="block text-sm font-medium text-zinc-300 mb-3">
+              <label className="block text-sm font-medium text-[var(--text)] mb-3">
                 Content
               </label>
+
+              <div className="rounded-md border border-[var(--border)] bg-[var(--surface-2)] px-4 py-3">
+  <p className="text-sm text-[var(--text-secondary)]">
+    Write freely. Your post supports headings, lists and rich formatting.
+  </p>
+</div>
 
               <Controller
                 name="content"
@@ -118,7 +135,7 @@ function CreatePost() {
 
             <Button
               type='submit'
-              className="w-full bg-white text-black hover:bg-zinc-200 transition rounded-xl py-4 text-lg font-semibold"
+              className="w-full py-4 text-lg"
             >
               Publish Post
             </Button>

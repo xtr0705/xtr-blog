@@ -12,7 +12,6 @@ function AllPosts() {
     const fetchPosts = async () => {
       try {
         const data = await appwriteService.getPosts();
-        console.log(data)
         if (data) {
           setPosts(data.documents)
         }
@@ -42,15 +41,51 @@ function AllPosts() {
     : text;
 }
 
+  if (!loading && posts.length === 0) {
+  return (
+    <PageFadeIn>
+      <div className="min-h-screen bg-[var(--bg)] flex items-center justify-center px-6">
+        <div className="text-center">
+          <h2 className="text-3xl font-bold text-[var(--text)]">
+            No posts yet
+          </h2>
+
+          <p className="mt-3 text-[var(--text-secondary)]">
+            Be the first one to publish something.
+          </p>
+
+          <Link
+            to="/add-post"
+            className="
+              inline-block
+              mt-8
+              px-6
+              py-3
+              rounded-xl
+              bg-[var(--text)]
+              text-[var(--bg)]
+              font-semibold
+              transition
+              hover:scale-105
+            "
+          >
+            Create your first post
+          </Link>
+        </div>
+      </div>
+    </PageFadeIn>
+  );
+}
+
   if (loading) {
     return (
-      <div className="min-h-screen bg-zinc-950 flex items-center justify-center">
+      <div className="min-h-screen bg-(--bg) flex items-center justify-center">
 
         <div className="flex flex-col items-center gap-4">
 
-          <div className="w-10 h-10 border-4 border-zinc-700 border-t-white rounded-full animate-spin"></div>
+          <div className="w-10 h-10 border-4 border-(--border) border-t-(--text) rounded-full animate-spin"></div>
 
-          <p className="text-zinc-400 text-sm">
+          <p className="text-(--text-secondary) text-sm">
             Loading posts...
           </p>
 
@@ -64,30 +99,32 @@ function AllPosts() {
 
     return (
       <PageFadeIn>
-        <div className="min-h-screen bg-zinc-950 text-white px-4 py-10 md:py-14">
+        <div className="min-h-screen bg-(--bg) text-(--text) px-4 py-10 md:py-14">
 
           <div className="max-w-7xl mx-auto">
 
             <div className="mb-10">
 
-              <p className="text-sm uppercase tracking-[0.3em] text-zinc-500 mb-4">
+              <p className="text-sm uppercase tracking-[0.3em] text-(--text-secondary) mb-4">
                 Explore
               </p>
 
               <h1 className="text-4xl md:text-5xl font-black font-[Sora] leading-tight mb-4">
                 Community
-                <span className="italic font-[Serif] font-thin text-zinc-400 block">
+                <span className="italic font-[Serif] font-thin text-[var(--text-secondary)] block">
                   Posts
                 </span>
               </h1>
 
-              <p className="text-zinc-400 text-lg max-w-2xl">
+              <p className="text-[var(--text-secondary)] text-lg max-w-2xl">
                 Read thoughts, opinions, questionable late-night ideas, and everything in between.
               </p>
 
             </div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            <div className="grid grid-cols-1
+sm:grid-cols-2
+xl:grid-cols-3 gap-4 md:gap-6">
 
               {posts.map((post) => (
 
@@ -97,7 +134,7 @@ function AllPosts() {
                   className="group"
                 >
 
-                  <div className="h-full bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-zinc-700 hover:bg-zinc-900/80 transition duration-300 hover:shadow-xl hover:-translate-y-1">
+                  <div className="h-full bg-[var(--surface)] border border-[var(--border)] rounded-xl overflow-hidden hover:border-zinc-500 hover:bg-[var(--hover)] transition duration-300 hover:shadow-xl hover:-translate-y-1">
 
 
                     <div className="overflow-hidden">
@@ -115,15 +152,17 @@ function AllPosts() {
                     </div>
 
                     <div className="p-5">
-
-                      <p className="text-zinc-500 text-xs mb-3">
-                        By {post.name}
-                      </p>
-                      <p className="text-zinc-500 text-xs mb-3">
-                        On {new Date(post.$createdAt).toDateString().split(' ').slice(1).join(' ')}
-                      </p>
-
-                      <h2 className="text-xl font-bold text-white mb-3 line-clamp-1">
+                      <div className="flex items-center justify-between text-xs text-[var(--text-secondary)] mb-3">
+                        <span>{post.name}</span>
+                        <span>
+                          {new Date(post.$createdAt).toLocaleDateString("en-GB", {
+                            day: "2-digit",
+                            month: "short",
+                            year: "numeric",
+                          })}
+                        </span>
+                      </div>
+                      <h2 className="text-xl font-bold text-[var(--text)] mb-3 line-clamp-1">
 
                         {post.title
                           ? post.title
@@ -131,7 +170,7 @@ function AllPosts() {
 
                       </h2>
 
-                      <p className="text-zinc-400 text-sm leading-relaxed line-clamp-3">
+                      <p className="text-[var(--text-secondary)] text-sm leading-relaxed line-clamp-3">
   {getPreview(post.content, 90)}
 </p>
 

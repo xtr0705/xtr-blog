@@ -69,14 +69,17 @@ function Login() {
           <div className="min-h-screen bg-(--bg) flex items-center justify-center px-4">
             <div className="w-full max-w-md bg-(--surface) border border-(--border) rounded-2xl p-8 shadow-xl" >
               <div className="mb-8 text-center" >
+                <div className="mb-8" >
+
                 <Link
                   to="/"
                   className="text-2xl font-black tracking-tight text-[var(--text)]"
-                >
+                  >
                   xtr.Blog
                 </Link> 
+                  </div>
 
-                <h1 className="text-4xl font-black text-[var(--text)] mb-3" >
+                <h1 className="text-4xl font-black text-[var(--text)] mb-2" >
                   Welcome Back
                 </h1>
 

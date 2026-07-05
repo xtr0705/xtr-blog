@@ -59,19 +59,19 @@ function ViewPost() {
 
   if (!data) {
     return (
-      <div className="min-h-screen bg-zinc-950 flex items-center justify-center px-4">
+      <div className="min-h-screen bg-[var(--bg)] flex items-center justify-center px-4">
 
         <div className="flex flex-col items-center gap-5">
 
-          <div className="w-12 h-12 border-4 border-zinc-800 border-t-white rounded-full animate-spin"></div>
+          <div className="w-12 h-12 border-4 bg-[vaborder-[var(--border)] border-t-[var(--text)]r(--bg)] rounded-full animate-spin"></div>
 
           <div className="text-center">
 
-            <h2 className="text-xl sm:text-2xl font-bold text-white mb-2">
+            <h2 className="text-xl sm:text-2xl font-bold text-[var(--text)] mb-2">
               Loading Post
             </h2>
 
-            <p className="text-zinc-500 text-sm sm:text-base">
+            <p className="text-[var(--text-secondary)] text-sm sm:text-base">
               Fetching thoughts from the void...
             </p>
 
@@ -84,13 +84,13 @@ function ViewPost() {
   } else {
     return (
       <PageFadeIn>
-        <div className="min-h-screen bg-zinc-950 text-white px-3 sm:px-4 py-8 md:py-14">
+        <div className="min-h-screen bg-[var(--bg)] text-[var(--text)] px-3 sm:px-4 py-8 md:py-14">
 
           <div className="max-w-4xl mx-auto">
 
             <div className="mb-6 md:mb-8">
 
-              <p className="text-[10px] sm:text-sm uppercase tracking-[0.25em] text-zinc-500 mb-3 md:mb-4">
+              <p className="text-[10px] sm:text-sm uppercase tracking-[0.25em] text-[var(--text-secondary)] mb-3 md:mb-4">
                 Blog Post
               </p>
 
@@ -100,11 +100,11 @@ function ViewPost() {
 
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
 
-                <p className="text-zinc-500 text-xs sm:text-sm">
+                <p className="text-[var(--text-secondary)] text-xs sm:text-sm">
                   By {data.name}
                 </p>
 
-                <p className="text-zinc-500 text-xs sm:text-sm">
+                <p className="text-[var(--text-secondary)] text-xs sm:text-sm">
                   On {new Date(data.$createdAt).toDateString().split(' ').slice(1).join(' ')}
 
                 </p>
@@ -112,7 +112,7 @@ function ViewPost() {
                 {
                   userData && userData.id === data.userId && (
                     <Button
-                      className="w-full sm:w-auto bg-red-500 hover:bg-red-600 text-white px-5 py-2.5 rounded-xl transition text-sm font-medium"
+                      className="w-full sm:w-auto bg-red-500 hover:bg-red-600 text-[var(--text)] px-5 py-2.5 rounded-xl transition text-sm font-medium"
                       onClick={deletePost}
                     >
                       Delete Post
@@ -123,7 +123,7 @@ function ViewPost() {
               </div>
             </div>
 
-            <div className="overflow-hidden rounded-2xl md:rounded-3xl border border-zinc-800 mb-6 md:mb-10 max-w-4xl mx-auto">
+            <div className="overflow-hidden rounded-2xl md:rounded-3xl border border-[var(--border)] mb-6 md:mb-10 max-w-4xl mx-auto">
 
               {
                 data.featuredImage &&(
@@ -136,7 +136,7 @@ function ViewPost() {
 
             </div>
 
-            <div className="bg-zinc-900 border border-zinc-800 rounded-2xl md:rounded-3xl p-5 sm:p-6 md:p-10">
+            <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl md:rounded-3xl p-5 sm:p-6 md:p-10">
 
               <div className="blog-content"
               dangerouslySetInnerHTML={{

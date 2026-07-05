@@ -78,18 +78,39 @@ function TextEditor({
   }
 
   return (
-    <div className="border border-zinc-800 bg-black/40">
+    <div className="overflow-hidden rounded-md border border-[var(--border)] bg-[var(--surface)]">
 
-     <div className="flex flex-wrap gap-2 border-b border-zinc-800 p-3">
+     <div 
+     className="
+        flex
+        flex-wrap
+        gap-2
+
+        border-b
+        border-[var(--border)]
+
+        bg-[var(--surface-2)]
+
+        p-3
+      ">
 
   <button
     type="button"
     onClick={() => editor.chain().focus().toggleBold().run()}
-    className={`px-3 py-2 transition ${
-      editor.isActive("bold")
-        ? "bg-violet-600 text-white"
-        : "bg-zinc-800 hover:bg-zinc-700"
-    }`}
+    className={`
+  px-3
+  py-2
+  border
+  border-[var(--border)]
+  bg-[var(--surface)]
+  transition
+  hover:bg-[var(--hover)]
+  ${
+    editor.isActive("bold")
+      ? "bg-[var(--text)] text-[var(--bg)]"
+      : ""
+  }
+`}
   >
     <FaBold />
   </button>
@@ -97,11 +118,21 @@ function TextEditor({
   <button
     type="button"
     onClick={() => editor.chain().focus().toggleItalic().run()}
-    className={`px-3 py-2 transition ${
-      editor.isActive("italic")
-        ? "bg-violet-600 text-white"
-        : "bg-zinc-800 hover:bg-zinc-700"
-    }`}
+   
+    className={`
+  px-3
+  py-2
+  border
+  border-[var(--border)]
+  bg-[var(--surface)]
+  transition
+  hover:bg-[var(--hover)]
+  ${
+    editor.isActive("italic")
+      ? "bg-[var(--text)] text-[var(--bg)]"
+      : ""
+  }
+`}
   >
     <FaItalic />
   </button>
@@ -111,11 +142,21 @@ function TextEditor({
     onClick={() =>
       editor.chain().focus().toggleHeading({ level: 1 }).run()
     }
-    className={`px-3 py-2 transition ${
-      editor.isActive("heading", { level: 1 })
-        ? "bg-violet-600 text-white"
-        : "bg-zinc-800 hover:bg-zinc-700"
-    }`}
+
+    className={`
+  px-3
+  py-2
+  border
+  border-[var(--border)]
+  bg-[var(--surface)]
+  transition
+  hover:bg-[var(--hover)]
+  ${
+    editor.isActive("heading", { level: 1 })
+      ? "bg-[var(--text)] text-[var(--bg)]"
+      : ""
+  }
+`}
   >
     H1
   </button>
@@ -125,11 +166,21 @@ function TextEditor({
     onClick={() =>
       editor.chain().focus().toggleHeading({ level: 2 }).run()
     }
-    className={`px-3 py-2 transition ${
-      editor.isActive("heading", { level: 2 })
-        ? "bg-violet-600 text-white"
-        : "bg-zinc-800 hover:bg-zinc-700"
-    }`}
+    className={`
+  px-3
+  py-2
+  border
+  border-[var(--border)]
+  bg-[var(--surface)]
+  transition
+  hover:bg-[var(--hover)]
+  ${
+    editor.isActive("heading", { level: 2 })
+      ? "bg-[var(--text)] text-[var(--bg)]"
+      : ""
+  }
+`}
+    
   >
     H2
   </button>
@@ -139,11 +190,20 @@ function TextEditor({
     onClick={() =>
       editor.chain().focus().toggleBulletList().run()
     }
-    className={`px-3 py-2 transition ${
-      editor.isActive("bulletList")
-        ? "bg-violet-600 text-white"
-        : "bg-zinc-800 hover:bg-zinc-700"
-    }`}
+    className={`
+  px-3
+  py-2
+  border
+  border-[var(--border)]
+  bg-[var(--surface)]
+  transition
+  hover:bg-[var(--hover)]
+  ${
+    editor.isActive("bulletList")
+      ? "bg-[var(--text)] text-[var(--bg)]"
+      : ""
+  }
+`}
   >
     <FaListUl />  </button>
 
@@ -152,11 +212,20 @@ function TextEditor({
     onClick={() =>
       editor.chain().focus().toggleOrderedList().run()
     }
-    className={`px-3 py-2 transition ${
-      editor.isActive("orderedList")
-        ? "bg-violet-600 text-white"
-        : "bg-zinc-800 hover:bg-zinc-700"
-    }`}
+    className={`
+  px-3
+  py-2
+  border
+  border-[var(--border)]
+  bg-[var(--surface)]
+  transition
+  hover:bg-[var(--hover)]
+  ${
+    editor.isActive("orderedList")
+      ? "bg-[var(--text)] text-[var(--bg)]"
+      : ""
+  }
+`}
   >
     <FaListOl /> 
   </button>
@@ -166,11 +235,20 @@ function TextEditor({
     onClick={() =>
       editor.chain().focus().toggleBlockquote().run()
     }
-    className={`px-3 py-2 transition ${
-      editor.isActive("blockquote")
-        ? "bg-violet-600 text-white"
-        : "bg-zinc-800 hover:bg-zinc-700"
-    }`}
+    className={`
+  px-3
+  py-2
+  border
+  border-[var(--border)]
+  bg-[var(--surface)]
+  transition
+  hover:bg-[var(--hover)]
+  ${
+    editor.isActive("blockquote")
+      ? "bg-[var(--text)] text-[var(--bg)]"
+      : ""
+  }
+`}
   >
     <FaQuoteLeft />
   </button>
@@ -180,11 +258,20 @@ function TextEditor({
   onClick={() =>
     editor.chain().focus().toggleCodeBlock().run()
   }
-  className={`px-3 py-2 transition ${
+  className={`
+  px-3
+  py-2
+  border
+  border-[var(--border)]
+  bg-[var(--surface)]
+  transition
+  hover:bg-[var(--hover)]
+  ${
     editor.isActive("codeBlock")
-      ? "bg-violet-600 text-white"
-      : "bg-zinc-800 hover:bg-zinc-700"
-  }`}
+      ? "bg-[var(--text)] text-[var(--bg)]"
+      : ""
+  }
+`}
 >
   <FaCode />
 </button>
@@ -194,11 +281,20 @@ function TextEditor({
   onClick={() =>
     editor.chain().focus().toggleCode().run()
   }
-  className={`px-3 py-2 transition ${
+  className={`
+  px-3
+  py-2
+  border
+  border-[var(--border)]
+  bg-[var(--surface)]
+  transition
+  hover:bg-[var(--hover)]
+  ${
     editor.isActive("code")
-      ? "bg-violet-600 text-white"
-      : "bg-zinc-800 hover:bg-zinc-700"
-  }`}
+      ? "bg-[var(--text)] text-[var(--bg)]"
+      : ""
+  }
+`}
 >
   &lt;/&gt;
 </button>
@@ -208,7 +304,10 @@ function TextEditor({
     onClick={() =>
       editor.chain().focus().undo().run()
     }
-    className="px-3 py-2 bg-zinc-800 hover:bg-zinc-700 transition"
+    className="px-3 py-2 border
+border-[var(--border)]
+bg-[var(--surface)]
+hover:bg-[var(--hover)] transition"
   >
     <FaUndo />
   </button>
@@ -218,7 +317,10 @@ function TextEditor({
     onClick={() =>
       editor.chain().focus().redo().run()
     }
-    className="px-3 py-2 bg-zinc-800 hover:bg-zinc-700 transition"
+    className="px-3 py-2 border
+border-[var(--border)]
+bg-[var(--surface)]
+hover:bg-[var(--hover)] transition"
   >
     <FaRedo />
   </button>
@@ -228,11 +330,21 @@ function TextEditor({
   onClick={() =>
     editor.chain().focus().toggleStrike().run()
   }
-  className={`px-3 py-2 transition ${
+  
+  className={`
+  px-3
+  py-2
+  border
+  border-[var(--border)]
+  bg-[var(--surface)]
+  transition
+  hover:bg-[var(--hover)]
+  ${
     editor.isActive("strike")
-      ? "bg-violet-600 text-white"
-      : "bg-zinc-800 hover:bg-zinc-700"
-  }`}
+      ? "bg-[var(--text)] text-[var(--bg)]"
+      : ""
+  }
+`}
 >
   <FaStrikethrough />
 </button>
@@ -240,7 +352,18 @@ function TextEditor({
 </div>
       <EditorContent
         editor={editor}
-        className="min-h-87.5 p-6 text-white"
+        className="
+min-h-[350px]
+p-6
+
+bg-[var(--surface)]
+
+text-[var(--text)]
+
+prose
+prose-zinc
+max-w-none
+"
       />
 
     </div>

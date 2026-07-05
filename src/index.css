@@ -1,108 +1,9 @@
-@import 'tailwindcss';
-.ProseMirror {
-  min-height: 250px;
-  padding: 1.5rem;
-  color: white;
-  outline: none;
-}
+@import "tailwindcss";
 
-.ProseMirror h1,
-.ProseMirror h2,
-.ProseMirror h3 {
-  font-weight: bold;
-}
 
-.ProseMirror p {
-  margin: 0.75rem 0;
-}
-
-.ProseMirror ul {
-  list-style: disc;
-  margin-left: 1.5rem;
-}
-
-.ProseMirror ol {
-  list-style: decimal;
-  margin-left: 1.5rem;
-}
-
-.ProseMirror blockquote {
-  border-left: 4px solid #8b5cf6;
-  padding-left: 1rem;
-  color: #d4d4d8;
-}
-
-.blog-content ul {
-  list-style-type: disc;
-  padding-left: 1.5rem;
-  margin: 1rem 0;
-}
-
-.blog-content ol {
-  list-style-type: decimal;
-  padding-left: 1.5rem;
-  margin: 1rem 0;
-}
-
-.blog-content li {
-  display: list-item;
-  margin: 0.5rem 0;
-}
-
-.blog-content blockquote {
-  border-left: 4px solid #8b5cf6;
-  padding-left: 1rem;
-  margin: 1rem 0;
-  color: #a1a1aa;
-}
-
-.blog-content h1 {
-  font-size: 2.25rem;
-  font-weight: 700;
-  margin: 1rem 0;
-}
-
-.blog-content h2 {
-  font-size: 1.75rem;
-  font-weight: 700;
-  margin: 1rem 0;
-}
-
-.blog-content p {
-  margin: 0.75rem 0;
-}
-.blog-content pre,
-.ProseMirror pre {
-  background: #26282c;
-  color: #e5e7eb;
-  padding: 1rem 1.25rem;
-  margin: 1rem 0;
-  border: 1px solid #27272a;
-  border-radius: 0.75rem;
-  overflow-x: auto;
-  font-family: "Fira Code", "JetBrains Mono", monospace;
-  font-size: 0.9rem;
-  line-height: 1.6;
-}
-
-.blog-content pre code,
-.ProseMirror pre code {
-  background: transparent;
-  padding: 0;
-  color: inherit;
-  font-size: inherit;
-}
-
-.blog-content code:not(pre code),
-.ProseMirror code:not(pre code) {
-  background: rgba(139, 92, 246, 0.15);
-  color: #c4b5fd;
-  padding: 0.15rem 0.4rem;
-  border-radius: 0.35rem;
-  font-family: "Fira Code", "JetBrains Mono", monospace;
-}
 :root {
   --bg: #fafafa;
+
   --surface: #ffffff;
   --surface-2: #f4f4f5;
 
@@ -116,6 +17,7 @@
 
 .dark {
   --bg: #09090b;
+
   --surface: #18181b;
   --surface-2: #27272a;
 
@@ -130,7 +32,176 @@
 body {
   background: var(--bg);
   color: var(--text);
+
   transition:
     background-color .25s ease,
     color .25s ease;
+}
+
+
+
+.ProseMirror {
+  min-height: 350px;
+  outline: none;
+
+  color: var(--text);
+  line-height: 1.9;
+}
+
+.ProseMirror h1,
+.ProseMirror h2,
+.ProseMirror h3 {
+  color: var(--text);
+  font-weight: 700;
+  margin: 1.75rem 0 1rem;
+}
+
+.ProseMirror p {
+  color: var(--text-secondary);
+  margin: 1rem 0;
+}
+
+.ProseMirror ul,
+.ProseMirror ol {
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+.ProseMirror li {
+  margin: .45rem 0;
+}
+
+.ProseMirror blockquote {
+  border-left: 3px solid var(--border);
+  padding-left: 1rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin: 1.5rem 0;
+}
+
+.ProseMirror code:not(pre code) {
+  background: rgba(139, 92, 246, .15);
+  color: #c4b5fd;
+
+  padding: .15rem .4rem;
+  border-radius: .35rem;
+
+  font-family: "JetBrains Mono", monospace;
+}
+
+.ProseMirror pre {
+  background: #111827;
+  color: #f8fafc;
+
+  padding: 1rem;
+  border-radius: .75rem;
+
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.ProseMirror pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+
+
+.blog-content {
+  color: var(--text);
+  font-size: 1.05rem;
+  line-height: 1.9;
+}
+
+.blog-content h1,
+.blog-content h2,
+.blog-content h3 {
+  color: var(--text);
+  font-weight: 700;
+
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.blog-content p {
+  color: var(--text-secondary);
+  margin: 1rem 0;
+}
+
+.blog-content ul,
+.blog-content ol {
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+.blog-content ul {
+  list-style: disc;
+}
+
+.blog-content ol {
+  list-style: decimal;
+}
+
+.blog-content li {
+  margin: .45rem 0;
+}
+
+.blog-content img {
+  display: block;
+
+  max-width: 100%;
+
+  margin: 2rem auto;
+  border-radius: .75rem;
+}
+
+.blog-content a {
+  color: #3b82f6;
+  text-decoration: underline;
+}
+
+.blog-content blockquote {
+  border-left: 3px solid var(--border);
+  padding-left: 1rem;
+
+  color: var(--text-secondary);
+  font-style: italic;
+
+  margin: 1.5rem 0;
+}
+
+.blog-content code:not(pre code) {
+  background: rgba(139, 92, 246, .15);
+  color: #c4b5fd;
+
+  padding: .15rem .4rem;
+  border-radius: .35rem;
+
+  font-family: "JetBrains Mono", monospace;
+}
+
+.blog-content pre {
+  background: #111827;
+  color: #f8fafc;
+
+  padding: 1rem;
+  border-radius: .75rem;
+
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.blog-content pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+.blog-content img {
+  transition: transform .25s ease;
+}
+
+.blog-content img:hover {
+  transform: scale(1.01);
 }

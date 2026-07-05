@@ -47,13 +47,13 @@ function Signup() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-zinc-950 flex items-center justify-center">
+      <div className="min-h-screen bg-(--bg) flex items-center justify-center">
 
         <div className="flex flex-col items-center gap-4">
 
           <div className="w-10 h-10 border-4 border-zinc-700 border-t-white rounded-full animate-spin"></div>
 
-          <p className="text-zinc-400 text-sm">
+          <p className="text-(--text-secondary) text-sm">
             Creating Account and Logging in...
           </p>
 
@@ -64,17 +64,24 @@ function Signup() {
   } else {
     return (
       <PageFadeIn>
-        <div className="min-h-screen bg-zinc-950 flex items-center justify-center px-4">
+        <div className="min-h-screen bg-(--bg) flex items-center justify-center px-4">
 
-          <div className="w-full max-w-md bg-zinc-900 border border-zinc-800 rounded-3xl p-8 shadow-2xl">
+          <div className="w-full max-w-md bg-(--surface) border border-(--border) rounded-3xl p-8 shadow-2xl">
 
             <div className="mb-8 text-center">
-
-              <h1 className="text-4xl font-black text-white mb-3">
+              <div className="mb-8" >
+              <Link
+                to="/"
+                className="text-2xl font-black tracking-tight text-[var(--text)]"
+              >
+                xtr.Blog
+              </Link>
+              </div>
+              <h1 className="text-4xl font-black text-[var(--text)] mb-3">
                 Create Account
               </h1>
 
-              <p className="text-zinc-400">
+              <p className="text-(--text-secondary)">
                 Start sharing your thoughts with the world
               </p>
 
@@ -101,7 +108,7 @@ function Signup() {
                 <Input
                   type="text"
                   placeholder="Enter username"
-                  className="w-full text-white"
+                  className="w-full text-[var(--text)]"
                   {...register("name", {
                     required: "Username is required",
                     minLength: {
@@ -130,7 +137,7 @@ function Signup() {
                 <Input
                   type="email"
                   placeholder="Enter your email"
-                  className="w-full text-white"
+                  className="w-full text-[var(--text)]"
                   {...register("email", {
                     required: "Email is required",
                     validate: {
@@ -159,7 +166,7 @@ function Signup() {
                   <Input
                     type={showPassword ? "text" : "password"}
                     placeholder="Create a password"
-                    className="w-full text-white"
+                    className="w-full text-[var(--text)]"
                     {...register("password", {
                       required: "Password is required",
                       validate: {
@@ -175,7 +182,7 @@ function Signup() {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-white transition"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-[var(--text-secondary)] hover:text-[var(--text)] transition"
                   >
                     {
                       showPassword
@@ -192,17 +199,17 @@ function Signup() {
               </div>
               <Button
                 type="submit"
-                className="w-full bg-white text-black hover:bg-zinc-600 transition rounded-xl py-3 font-semibold"
+                className="w-full py-3 rounded-xl"
               >Create Account</Button>
             </form>
 
-            <p className="text-center text-zinc-400 text-sm mt-6">
+            <p className="text-center text-[var(--text-secondary)] text-sm mt-6">
 
               Already have an account?{" "}
 
               <Link
                 to="/login"
-                className="text-white hover:underline"
+                className="text-[var(--text)] hover:underline"
               >
                 Sign In
               </Link>

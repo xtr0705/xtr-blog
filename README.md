@@ -42,6 +42,21 @@ Built using React, Appwrite, Redux Toolkit, Tailwind CSS, and Framer Motion.
 
 ---
 
+## Screenshots
+
+## Home Page
+
+![Home Page](./xtr-blog/screenshots/blog-hero.png)
+
+## Explore posts
+
+![Debate Chat](./xtr-blog/screenshots/blog-explore.png)
+
+
+## Create post
+
+![Debate Report](./corestance/screenshots/blog-create.png)
+
 ## Running Locally
 
 Clone the repository:
@@ -98,7 +113,6 @@ VITE_BUCKET_ID=
 - Search Functionality
 - User Profiles
 - Like System
-- Rich Text Editor
 
 ---
 

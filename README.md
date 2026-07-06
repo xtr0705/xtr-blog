@@ -1,77 +1,85 @@
-# xtr.Blog
+# xtr.Blog (v1.2)
 
-A modern full-stack blogging platform where users can create accounts, publish posts, upload optional featured images, and explore content from other users.
+A modern full-stack blogging platform built for writing, publishing, and managing content with a clean, responsive interface.
 
-Built using React, Appwrite, Redux Toolkit, Tailwind CSS, and Framer Motion.
+Create an account, write posts using a rich text editor, upload featured images, explore community posts, and switch seamlessly between light and dark themes.
+
+Built with React, Appwrite, Redux Toolkit, Tailwind CSS, and TipTap.
 
 ---
 
 ## Features
 
 - User Authentication
+- Rich Text Editor (TipTap)
 - Create & Delete Posts
-- Optional Featured Images
+- Featured Image Uploads
+- Community Feed
+- Light & Dark Theme
+- Protected Routes
 - Protected Delete Actions
-- Responsive UI
-- Smooth Page Transitions
-- Loading & Error Handling
+- Responsive Design
 - Form Validation
-- Dark Modern UI Design
-- Mobile Friendly Layout
+- Loading & Empty States
+- Smooth Page Transitions
 
 ---
 
 ## Tech Stack
 
 ### Frontend
+
 - React
 - React Router DOM
 - Redux Toolkit
 - React Hook Form
 - Tailwind CSS
 - Framer Motion
+- TipTap Editor
 - Lucide React
 
 ### Backend
+
 - Appwrite Authentication
 - Appwrite Database
 - Appwrite Storage
 
 ### Deployment
+
 - Netlify
 
 ---
 
 ## Screenshots
 
-## Home Page
+> ![Home Page](./xtr-blog/screenshots/blog-hero.png)
+> 
+## Post creation 
 
-![Home Page](./xtr-blog/screenshots/blog-hero.png)
-
-## Explore posts
-
-![Debate Chat](./xtr-blog/screenshots/blog-explore.png)
+![Create and post blog](./xtr-blog/screenshots/blog-create.png)
 
 
-## Create post
+## Explore posts by other users
 
-![Debate Report](./corestance/screenshots/blog-create.png)
+![Explore page](./xtr-blog/screenshots/blog-explore.png)
+
+---
 
 ## Running Locally
 
-Clone the repository:
+Clone the repository
 
 ```bash
 git clone https://github.com/your-username/xtr-blog.git
 ```
 
-Install dependencies:
+Install dependencies
 
 ```bash
 npm install
 ```
 
-Start the development server:
+Run the development server
 
 ```bash
 npm run dev
@@ -81,7 +89,7 @@ npm run dev
 
 ## Environment Variables
 
-Create a `.env` file in the root directory:
+Create a `.env` file in the project root.
 
 ```env
 VITE_APPWRITE_URL=
@@ -93,33 +101,43 @@ VITE_BUCKET_ID=
 
 ---
 
-## What I Learned While Building This
+## What I Learned
 
-- Authentication handling in full-stack apps
-- Backend integration using Appwrite
-- Async state management in React
-- Image upload & storage workflows
-- React Router deployment fixes on Netlify
-- Responsive UI architecture
-- Loading & validation patterns
-- Real-world debugging and deployment
+Building xtr.Blog helped me gain hands-on experience with:
+
+- Building a complete full-stack React application
+- Authentication and protected routes
+- Appwrite Database & Storage integration
+- Rich text editing using TipTap
+- Image upload workflows
+- Redux state management
+- React Hook Form validation
+- Theme management (Light/Dark Mode)
+- Responsive UI design
+- Production deployment using Netlify
+- Debugging real-world frontend and backend issues
 
 ---
 
 ## Future Improvements
 
-- Edit Posts
-- Comments System
-- Search Functionality
+- Edit Existing Posts
 - User Profiles
-- Like System
+- Comments System
+- Search & Filtering
+- Categories & Tags
+- Like & Bookmark System
+- Reading Time Estimation
+- Markdown Import/Export
 
 ---
 
 ## Live Demo
 
-https://xtr-blog.netlify.app/
+🌐 https://xtr-blog.netlify.app/
 
 ---
 
-Built by Salem Ali.
+## Author
+
+Built with ❤️ by **Salem Ali**.

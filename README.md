@@ -52,16 +52,17 @@ Built with React, Appwrite, Redux Toolkit, Tailwind CSS, and TipTap.
 
 ## Screenshots
 
-> ![Home Page](./xtr-blog/screenshots/blog-hero.png)
-> 
+## Home page
+> ![Home Page](./screenshots/blog-hero.png)
+
 ## Post creation 
 
-![Create and post blog](./xtr-blog/screenshots/blog-create.png)
+![Create and post blog](./screenshots/blog-create.png)
 
 
 ## Explore posts by other users
 
-![Explore page](./xtr-blog/screenshots/blog-explore.png)
+![Explore page](./screenshots/blog-explore.png)
 
 ---
 

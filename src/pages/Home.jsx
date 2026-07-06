@@ -78,11 +78,11 @@ export default function Home() {
               <div className="hover:bg-(--surface) border border-(--border) rounded-3xl p-6 h-52 flex flex-col justify-between">
                 <div>
                   <p className="text-(--text-secondary) text-sm mb-2">Feature</p>
-                  <h3 className="text-xl sm:text-2xl font-bold">Authentication</h3>
+                  <h3 className="text-xl sm:text-2xl font-bold">Clean Reading</h3>
                 </div>
 
                 <p className="text-(--text-secondary) text-sm">
-                  Your thoughts, safely locked behind a password you’ll forget.
+                   Minimal layouts designed to keep the focus on your words(If you can).
                 </p>
               </div>
 
@@ -100,22 +100,22 @@ export default function Home() {
               <div className="hover:bg-(--surface) border border-(--border) rounded-3xl p-4 sm:p-6 h-52 flex flex-col justify-between sm:-mt-8">
                 <div>
                   <p className="text-(--text-secondary) text-sm mb-2">Feature</p>
-                  <h3 className="text-xl sm:text-2xl font-bold">CRUD System</h3>
+                  <h3 className="text-xl sm:text-2xl font-bold">Rich Formatting</h3>
                 </div>
 
                 <p className="text-(--text-secondary) text-sm">
-                  Post it. Edit it. Delete it. Regret it later.
+                  Headings, lists, quotes, code blocks, and more—all in one editor.
                 </p>
               </div>
 
               <div className="hover:bg-(--surface) border border-(--border) rounded-3xl p-4 sm:p-6 h-52 flex flex-col justify-between">
                 <div>
                   <p className="text-(--text-secondary) text-sm mb-2">Feature</p>
-                  <h3 className="text-xl sm:text-2xl font-bold">Responsive UI</h3>
+                  <h3 className="text-xl sm:text-2xl font-bold">Fast Publishing</h3>
                 </div>
 
                 <p className="text-(--text-secondary) text-sm">
-                  Looks good on every screen you procrastinate on.
+                  Publish your thoughts before you change your mind.
                 </p>
               </div>
             </div>

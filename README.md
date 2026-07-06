@@ -135,6 +135,12 @@ Building xtr.Blog helped me gain hands-on experience with:
 
 ## Live Demo
 
+## Demo
+
+| Email | Password |
+|--------|----------|
+| demouser0705@gmail.com | demo@0705X |
+
 🌐 https://xtr-blog.netlify.app/
 
 ---
